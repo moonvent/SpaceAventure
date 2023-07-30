@@ -18,10 +18,8 @@ public class Bullet : MonoBehaviour
     // время, после которого пуля будет уничтожена
     private const float TimeToDestroyBullet = 1f;
 
-    void Awake()
-    {
-
-    }
+    // список пуль
+    private BulletList bulletList = new BulletList();
 
     public void Init(GameObject loadedBulletPrefab)
     {
@@ -43,6 +41,7 @@ public class Bullet : MonoBehaviour
     private void OnDestroy()
     {
         Debug.Log("bullet destroyed");
+        bulletList.DestroyBullet(this);
         Destroy(bullet);
     }
 
@@ -51,12 +50,9 @@ public class Bullet : MonoBehaviour
         bullet = Instantiate(loadedBulletPrefab, ShotObjectTransformField.position + ShotObjectTransformField.up / DistanceBetweenBulletAndObject, ShotObjectTransformField.rotation);
 
         bullet.GetComponent<Rigidbody2D>().velocity = ShotObjectTransformField.up * BulletSpeed;
-        //
-        // Destroy(bullet, TimeToDestroyBullet);
-        //
-        // bullet.OnDestroy = OnDestroyBullet;
-        //
-        // bulletList.Add(this);
-        // Debug.Log(this);
+
+        bulletList.AddNewBullet(this);
+
+        Destroy(this, TimeToDestroyBullet);
     }
 }

@@ -11,7 +11,6 @@ public class Gun : MonoBehaviour
     // временный объект пули
     private Bullet bullet;
 
-    private BulletList bulletList = new BulletList();
 
     // время, после которого пуля будет уничтожена
     private const float TimeToDestroyBullet = 1f;
@@ -42,7 +41,5 @@ public class Gun : MonoBehaviour
     {
         bullet = gameObject.AddComponent<Bullet>();
         bullet.CreateBulletInstance(BulletPrefab, ShotObjectTransformField);
-        Destroy(bullet, TimeToDestroyBullet);
-        bulletList.Add(bullet);
     }
 }

@@ -3,29 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class BulletList : MonoBehaviour
+public sealed class BulletList
 {
-    public static BulletList Instance { get; private set; }
+    private static List<Bullet> bulletList = new List<Bullet>();
 
-    private List<Bullet> bulletList;
-
-    private void Awake()
+    public void AddNewBullet(Bullet bullet)
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-            bulletList = new List<Bullet>();
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
+        bulletList.Add(bullet);
+        Debug.Log(bulletList.Count);
     }
 
-    public void Add(Bullet bullet)
+    public void DestroyBullet(Bullet bullet)
     {
-        Debug.Log(bullet);
-        // bulletList.Add(bullet);
+        bulletList.Remove(bullet);
     }
 }
