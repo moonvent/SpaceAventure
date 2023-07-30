@@ -1,8 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
+/// <summary>
+/// Класс для подсчёта кол-ва пуль
+/// </summary>
 public sealed class BulletList
 {
     private static List<Bullet> bulletList = new List<Bullet>();
