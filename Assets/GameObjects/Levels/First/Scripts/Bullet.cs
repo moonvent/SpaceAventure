@@ -6,11 +6,6 @@ using UnityEngine;
 /// </summary>
 public class Bullet : MonoBehaviour
 {
-
-    private static GameObject bulletPrefab = null;
-
-    private GameObject bullet;
-
     // скорость пули
     private const float BulletSpeed = 15f;
 
@@ -20,41 +15,24 @@ public class Bullet : MonoBehaviour
     // время, после которого пуля будет уничтожена
     private const float TimeToDestroyBullet = 1f;
 
-    // список пуль
-    private BulletList bulletList = new BulletList();
 
-    public void LoadPrefab()
-    {
-        if (!bulletPrefab)
-        {
-            bulletPrefab = Resources.Load<GameObject>("Levels/First/Prefabs/bullet");
-        }
-    }
-
-
-    private void OnDestroy()
-    {
-        bulletList.DestroyBullet(this);
-        Destroy(bullet);
-    }
-
+    /// <summary>
+    /// При коллизии с каким-либо объектом, мы отнимаем у объекта жизнь, и уничтожаем пулю
+    /// </summary>
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log(collision);
     }
 
-    public void CreateBulletInstance(Transform ShotObjectTransformField)
+    /// <summary>
+    /// Инициализация пули, направления куда летит, когда должна быть уничтожена, и т.д.
+    /// </summary>
+    public void BulletParamsInit(Transform ShotObjectTransformField)
     {
-        LoadPrefab();
+        gameObject.GetComponent<Rigidbody2D>().velocity = ShotObjectTransformField.up * BulletSpeed;
+        //
+        // // bulletList.AddNewBullet(this);
 
-        bullet = Instantiate(bulletPrefab, ShotObjectTransformField.position + ShotObjectTransformField.up / DistanceBetweenBulletAndObject, ShotObjectTransformField.rotation);
-
-        bullet.GetComponent<Rigidbody2D>().velocity = ShotObjectTransformField.up * BulletSpeed;
-
-        // bullet.OnCollisionEnter = OnCollisionEnter;
-
-        bulletList.AddNewBullet(this);
-
-        Destroy(this, TimeToDestroyBullet);
+        Destroy(gameObject, TimeToDestroyBullet);
     }
 }

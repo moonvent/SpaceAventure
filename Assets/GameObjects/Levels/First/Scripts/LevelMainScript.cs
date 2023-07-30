@@ -9,10 +9,16 @@ public class LevelMainScript : MonoBehaviour
     // объект коробля
     private Shuttle shuttle;
 
+    private Shuttle LoadShuttle()
+    {
+        GameObject ShuttlePrefab = Instantiate(Resources.Load<GameObject>("Levels/First/Prefabs/shuffle_v2"));
+        return ShuttlePrefab.GetComponent<Shuttle>();
+    }
+
     void Awake()
     {
         Debug.Log("level script awake");
-        shuttle = gameObject.AddComponent<Shuttle>();
+        shuttle = LoadShuttle();
     }
 
     // Start is called before the first frame update

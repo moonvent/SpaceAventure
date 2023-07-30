@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -16,33 +14,24 @@ public class Shuttle : MonoBehaviour
     private bool leftButtonPressed = false;
     private bool rightButtonPressed = false;
 
-    // префаб шатла
-    private GameObject ShuttlePrefab;
-
     // объект шатла
     private GameObject shuttle;
 
     // объект пушки шатла
     private Gun gun;
 
-    private void LoadPrefabs()
+    // задаем первичные параметры для класса
+    void Awake()
     {
-        ShuttlePrefab = Resources.Load<GameObject>("Levels/First/Prefabs/shuffle_v2");
+        Debug.Log("shuttle created");
+        gun = gameObject.AddComponent<Gun>();
     }
 
-    // задаем первисчные параметры для класса
-    private void Awake()
-    {
-        LoadPrefabs();
-        Debug.Log("shuttle created");
-        shuttle = Instantiate(ShuttlePrefab);
-        gun = shuttle.AddComponent<Gun>();
-    }
 
     // поворот шатла
     private void RotateShuttle(float newRotateMultiplier)
     {
-        shuttle.transform.Rotate(new Vector3(0, RotateValue * newRotateMultiplier, 0) * Time.deltaTime);
+        transform.Rotate(new Vector3(0, RotateValue * newRotateMultiplier, 0) * Time.deltaTime);
     }
 
     // удержание носа шатла
@@ -53,17 +42,17 @@ public class Shuttle : MonoBehaviour
         mousePosition = Camera.main.ScreenToWorldPoint(mousePosition); // Convert the mouse position to world coordinates
 
         Vector2 direction = new Vector2(
-            mousePosition.x - shuttle.transform.position.x,
-            mousePosition.y - shuttle.transform.position.y
+            mousePosition.x - transform.position.x,
+            mousePosition.y - transform.position.y
         );
 
-        shuttle.transform.up = direction;
+        transform.up = direction;
     }
 
     // перемещение шатла
     private void ChangeShuttlePosition()
     {
-        Vector3 position = shuttle.transform.position;
+        Vector3 position = transform.position;
 
         upButtonPressed = Input.GetKey(KeyCode.W);
         downButtonPressed = Input.GetKey(KeyCode.S);
@@ -79,7 +68,7 @@ public class Shuttle : MonoBehaviour
             position.x += (rightButtonPressed ? 1 : -1) * ShuttleMovementSpeed * Time.deltaTime;
         }
 
-        shuttle.transform.position = position;
+        transform.position = position;
 
     }
 
@@ -88,7 +77,7 @@ public class Shuttle : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            gun.Shot(shuttle.transform);
+            gun.Shot(transform);
         }
 
     }
