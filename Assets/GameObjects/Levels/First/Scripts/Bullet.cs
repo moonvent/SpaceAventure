@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// Кастомный объект пули
 /// </summary>
-public class Bullet : MonoBehaviour
+public class Bullet : Entity
 {
     // скорость пули
     private const float BulletSpeed = 15f;
@@ -15,13 +15,28 @@ public class Bullet : MonoBehaviour
     // время, после которого пуля будет уничтожена
     private const float TimeToDestroyBullet = 1f;
 
+    // объект с которым встретилась пуля
+    private Entity collisionEntity;
+
+    void Awake()
+    {
+        healPoints = 1;
+    }
+
 
     /// <summary>
     /// При коллизии с каким-либо объектом, мы отнимаем у объекта жизнь, и уничтожаем пулю
     /// </summary>
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision);
+        if (collision.gameObject.tag == BulletConstants.BulletTag)
+            return;
+        else if (collision.gameObject.tag == ShuttleConstants.ShuttleTag)
+        {
+            collisionEntity = collision.gameObject.GetComponent<Entity>();
+            collisionEntity.descreaseHealPoints(BulletConstants.BulletDamage);
+            // Debug.Log(collision.gameObject.tag);
+        }
     }
 
     /// <summary>
@@ -30,8 +45,6 @@ public class Bullet : MonoBehaviour
     public void BulletParamsInit(Transform ShotObjectTransformField)
     {
         gameObject.GetComponent<Rigidbody2D>().velocity = ShotObjectTransformField.up * BulletSpeed;
-        //
-        // // bulletList.AddNewBullet(this);
 
         Destroy(gameObject, TimeToDestroyBullet);
     }

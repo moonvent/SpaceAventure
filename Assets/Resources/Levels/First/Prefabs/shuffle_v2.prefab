@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 1308570811262082153}
   - component: {fileID: 1308570811262082134}
   - component: {fileID: 4273724156871285158}
+  - component: {fileID: -721491286837442391}
   m_Layer: 0
   m_Name: shuffle_v2
-  m_TagString: Untagged
+  m_TagString: shuttle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,3 +98,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e406d772be5c045048e46b33a9c1b8e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!68 &-721491286837442391
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1308570811262082135}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.2058799, y: 0.0013217032}
+  - {x: 0.13543665, y: 0.00004517287}
+  - {x: 0.12733458, y: -0.23055151}
+  - {x: 0.18995416, y: -0.36715165}
+  - {x: 0.07569106, y: -0.30405173}
+  - {x: -0.078140885, y: -0.30267134}
+  - {x: -0.1860125, y: -0.3651666}
+  - {x: -0.13707018, y: -0.23773342}
+  - {x: -0.1397683, y: -0.002573371}
+  - {x: -0.22047569, y: 0.001642935}
+  - {x: -0.10585114, y: 0.08997193}
+  - {x: -0.0022600256, y: 0.34629}
+  - {x: 0.10329388, y: 0.08015604}
+  - {x: 0.20913948, y: 0.0013217032}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class Shuttle : MonoBehaviour
+public class Shuttle : Entity
 {
     // скорость шатла
     private const float ShuttleMovementSpeed = 5f;
@@ -24,6 +24,7 @@ public class Shuttle : MonoBehaviour
     void Awake()
     {
         Debug.Log("shuttle created");
+        healPoints = ShuttleConstants.ShuttleHealPoints;
         gun = gameObject.AddComponent<Gun>();
     }
 
