@@ -78,12 +78,12 @@ public class Shuttle : Entity
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            gun.Shot(transform);
+            gun.Shot();
         }
 
     }
 
-    void Update()
+    void FixedUpdate()
     {
         ChangeNoseDirection();
         ChangeShuttlePosition();

@@ -19,15 +19,15 @@ public class Gun : MonoBehaviour
         }
     }
 
-    private void CreateBulletInstance(Transform ShotObjectTransformField)
+    private void CreateBulletInstance()
     {
         LoadBulletPrefab();
-        bullet = Instantiate(bulletPrefab, ShotObjectTransformField.position + ShotObjectTransformField.up / DistanceBetweenBulletAndObject, ShotObjectTransformField.rotation);
+        bullet = Instantiate(bulletPrefab, transform.position + transform.up / DistanceBetweenBulletAndObject, transform.rotation);
     }
 
-    public void Shot(Transform ShotObjectTransformField)
+    public void Shot()
     {
-        CreateBulletInstance(ShotObjectTransformField);
-        bullet.GetComponent<Bullet>().BulletParamsInit(ShotObjectTransformField);
+        CreateBulletInstance();
+        bullet.GetComponent<Bullet>().BulletParamsInit(gameObject);
     }
 }

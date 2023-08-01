@@ -16,7 +16,13 @@ public class Bullet : Entity
     private const float TimeToDestroyBullet = 1f;
 
     // объект с которым встретилась пуля
+    private GameObject collisionObject;
+
+    // сущность объекта с которым произошла коллизия
     private Entity collisionEntity;
+
+    // объект владелец пули
+    private GameObject owner;
 
     void Awake()
     {
@@ -33,18 +39,24 @@ public class Bullet : Entity
             return;
         else if (collision.gameObject.tag == ShuttleConstants.ShuttleTag)
         {
-            collisionEntity = collision.gameObject.GetComponent<Entity>();
-            collisionEntity.descreaseHealPoints(BulletConstants.BulletDamage);
-            // Debug.Log(collision.gameObject.tag);
+            collisionObject = collision.gameObject;
+
+            if (collisionObject != owner)
+            {
+                collisionEntity = collision.gameObject.GetComponent<Entity>();
+                collisionEntity.descreaseHealPoints(BulletConstants.BulletDamage);
+            }
         }
     }
 
     /// <summary>
     /// Инициализация пули, направления куда летит, когда должна быть уничтожена, и т.д.
+    /// <param name="ownerGameObject">Владелец пули, нужно чтобы сам себя не убил, ибо так работает, что если лететь в ту сторону в которую стреляешь наносишь урон сам себе</param>
     /// </summary>
-    public void BulletParamsInit(Transform ShotObjectTransformField)
+    public void BulletParamsInit(GameObject ownerGameObject)
     {
-        gameObject.GetComponent<Rigidbody2D>().velocity = ShotObjectTransformField.up * BulletSpeed;
+        owner = ownerGameObject;
+        gameObject.GetComponent<Rigidbody2D>().velocity = transform.up * BulletSpeed;
 
         Destroy(gameObject, TimeToDestroyBullet);
     }
