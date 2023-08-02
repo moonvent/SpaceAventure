@@ -28,6 +28,6 @@ public class Gun : MonoBehaviour
     public void Shot()
     {
         CreateBulletInstance();
-        bullet.GetComponent<Bullet>().BulletParamsInit(gameObject);
+        bullet.GetComponent<Bullet>().BulletParamsInit();
     }
 }
