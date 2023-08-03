@@ -32,6 +32,8 @@ public class Bullet : Entity
     /// </summary>
     void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("sex");
+        Destroy(gameObject);
 
         collisionTag = collision.gameObject.tag;
 
@@ -43,6 +45,7 @@ public class Bullet : Entity
             collisionEntity = collision.gameObject.GetComponent<Entity>();
             collisionEntity.descreaseHealPoints(BulletConstants.BulletDamage);
         }
+
     }
 
     /// <summary>
