@@ -1,31 +1,69 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
-public class EnemyFirstType : MonoBehaviour
+public class EnemyFirstType : SpaceFlyObject
 {
+    // обхект который нужно приследовать
+    private Shuttle shuttle;
 
-    // префаб врага
-    private GameObject EnumyPrefab;
+    // пушка объекта
+    private Gun gun;
 
-    // объект врага
-    private GameObject enemy;
+    // расстояние до игрока
+    private float distanceToPlayer;
 
-    public void Init()
-    {
-
-    }
-
-    // Start is called before the first frame update
     void Awake()
     {
+    }
+
+    public override void Init(Shuttle levelShuttle)
+    {
+        shuttle = levelShuttle;
+        healPoints = ShuttleConstants.ShuttleHealPoints;
+        gun = gameObject.AddComponent<Gun>();
+    }
+
+    protected override void ChangeNoseDirection()
+    {
+
+        Vector2 direction = new Vector2(
+            shuttle.transform.position.x - transform.position.x,
+            shuttle.transform.position.y - transform.position.y
+        );
+
+        transform.up = direction;
+    }
+
+    // перемещение шатла
+    protected override void ChangePosition()
+    {
+        distanceToPlayer = Vector3.Distance(transform.position, shuttle.transform.position);
+
+        // Вычисляем направление к игроку
+        Vector3 direction = shuttle.transform.position - transform.position;
+        direction.Normalize();
+
+        // Двигаем врага в направлении игрока
+        transform.position += direction * EnemyFirstTypeConstants.Speed * Time.deltaTime;
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        ChangeNoseDirection();
+        ChangePosition();
+    }
+
+    public override void Init()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    protected override void Shot()
+    {
+        throw new System.NotImplementedException();
     }
 }

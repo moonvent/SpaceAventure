@@ -36,14 +36,15 @@ public class Bullet : Entity
 
         collisionTag = collision.gameObject.tag;
 
-        if (collisionTag == BulletConstants.BulletTag)
-            return;
-
-        else if (collisionTag == ShuttleConstants.ShuttleTag)
-        {
-            collisionEntity = collision.gameObject.GetComponent<Entity>();
-            collisionEntity.descreaseHealPoints(BulletConstants.BulletDamage);
-        }
+        // if (collisionTag == BulletConstants.BulletTag)
+        //     return;
+        //
+        // else if (collisionTag == ShuttleConstants.ShuttleTag)
+        // {
+        //
+        // }
+        collisionEntity = collision.gameObject.GetComponent<Entity>();
+        collisionEntity.descreaseHealPoints(BulletConstants.BulletDamage);
 
     }
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class Shuttle : Entity
+public class Shuttle : SpaceFlyObject
 {
     // скорость шатла
     private const float ShuttleMovementSpeed = 5f;
@@ -23,20 +23,27 @@ public class Shuttle : Entity
     // задаем первичные параметры для класса
     void Awake()
     {
+        Init();
+    }
+
+    void FixedUpdate()
+    {
+        ChangeNoseDirection();
+        ChangePosition();
+        Shot();
+    }
+
+    public override void Init()
+    {
         Debug.Log("shuttle created");
         healPoints = ShuttleConstants.ShuttleHealPoints;
         gun = gameObject.AddComponent<Gun>();
+
     }
 
-
-    // поворот шатла
-    private void RotateShuttle(float newRotateMultiplier)
-    {
-        transform.Rotate(new Vector3(0, RotateValue * newRotateMultiplier, 0) * Time.deltaTime);
-    }
 
     // удержание носа шатла
-    private void ChangeNoseDirection()
+    protected override void ChangeNoseDirection()
     {
 
         Vector3 mousePosition = Input.mousePosition;
@@ -51,7 +58,7 @@ public class Shuttle : Entity
     }
 
     // перемещение шатла
-    private void ChangeShuttlePosition()
+    protected override void ChangePosition()
     {
         Vector3 position = transform.position;
 
@@ -74,7 +81,7 @@ public class Shuttle : Entity
     }
 
     // выстрел шатла
-    private void ShotFromShuttle()
+    protected override void Shot()
     {
         if (Input.GetKey(KeyCode.Space))
         {
@@ -83,10 +90,8 @@ public class Shuttle : Entity
 
     }
 
-    void FixedUpdate()
+    public override void Init(Shuttle levelShuttle)
     {
-        ChangeNoseDirection();
-        ChangeShuttlePosition();
-        ShotFromShuttle();
+        throw new System.NotImplementedException();
     }
 }

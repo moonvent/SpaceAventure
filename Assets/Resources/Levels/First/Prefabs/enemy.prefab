@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 975068395536172896}
   - component: {fileID: 5017415697603522313}
+  - component: {fileID: 5481913646703841785}
+  - component: {fileID: 3332607488798508527}
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
@@ -84,3 +86,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!68 &5481913646703841785
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530380895873456586}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: 0.20825833, y: -0.18579102}
+  - {x: 0.16188808, y: -0.14050293}
+  - {x: 0.1275231, y: -0.11413574}
+  - {x: 0.098792344, y: -0.095214844}
+  - {x: 0.07145186, y: -0.079711914}
+  - {x: 0.047461584, y: -0.068725586}
+  - {x: 0.019124605, y: -0.056396484}
+  - {x: 0.0005979652, y: -0.06652832}
+  - {x: -0.012506986, y: -0.053588867}
+  - {x: -0.04287095, y: -0.064453125}
+  - {x: -0.09671285, y: -0.091430664}
+  - {x: -0.14995691, y: -0.12780762}
+  - {x: -0.20577884, y: -0.17407227}
+  - {x: -0.201862, y: -0.114868164}
+  - {x: -0.17772266, y: -0.071899414}
+  - {x: -0.15018407, y: -0.03466797}
+  - {x: -0.11633319, y: -0.010009766}
+  - {x: -0.08458274, y: 0.04309082}
+  - {x: -0.052276395, y: 0.10058594}
+  - {x: 0.0000000020954758, y: 0.18847656}
+  - {x: 0.046954412, y: 0.092285156}
+  - {x: 0.09975785, y: -0.0009765625}
+  - {x: 0.16108122, y: -0.0435791}
+  - {x: 0.20455396, y: -0.10998535}
+  - {x: 0.20660178, y: -0.18322754}
+  m_AdjacentStartPoint: {x: 0, y: 0}
+  m_AdjacentEndPoint: {x: 0, y: 0}
+  m_UseAdjacentStartPoint: 0
+  m_UseAdjacentEndPoint: 0
+--- !u!114 &3332607488798508527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8530380895873456586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c8d63e949b8840d2adc9c8dc7fb791f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
