@@ -5,6 +5,14 @@ https://www.instagram.com/reel/CvX6QIJIK3m/?utm_source=ig_web_copy_link&igshid=M
 
 # TODO
 
+## Documentations
+
 * [ ] Make description
 * [ ] Make documentation
+
+
+## Roadmap
+
+* [ ] Add good input system
+* [ ] Add visible braking of objects
 

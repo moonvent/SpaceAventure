@@ -32,7 +32,6 @@ public class Bullet : Entity
     /// </summary>
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("sex");
         Destroy(gameObject);
 
         collisionTag = collision.gameObject.tag;
