@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class Shuttle : SpaceFlyObject
+public class Shuttle : SpaceFlyShuttle
 {
     // скорость шатла
     private const float ShuttleMovementSpeed = 5f;
@@ -16,9 +16,6 @@ public class Shuttle : SpaceFlyObject
 
     // объект шатла
     private GameObject shuttle;
-
-    // объект пушки шатла
-    private Gun gun;
 
     // задаем первичные параметры для класса
     void Awake()
@@ -37,10 +34,8 @@ public class Shuttle : SpaceFlyObject
     {
         Debug.Log("shuttle created");
         healPoints = ShuttleConstants.ShuttleHealPoints;
-        gun = gameObject.AddComponent<Gun>();
-
+        base.Init();
     }
-
 
     // удержание носа шатла
     protected override void ChangeNoseDirection()
@@ -88,10 +83,5 @@ public class Shuttle : SpaceFlyObject
             gun.Shot();
         }
 
-    }
-
-    public override void Init(Shuttle levelShuttle)
-    {
-        throw new System.NotImplementedException();
     }
 }

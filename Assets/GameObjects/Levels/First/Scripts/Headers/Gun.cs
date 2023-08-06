@@ -1,17 +1,17 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-
-public class Gun : MonoBehaviour
+public abstract class Gun : MonoBehaviour
 {
-    // временный объект пули
-    private GameObject bullet;
+    protected GameObject bullet;
 
     // расстояние от стреляющего объекта до начала показа пули
     private const float DistanceBetweenBulletAndObject = 2.1f;
 
     private static GameObject bulletPrefab = null;
 
-    public void LoadBulletPrefab()
+    private void LoadBulletPrefab()
     {
         if (!bulletPrefab)
         {
@@ -19,15 +19,11 @@ public class Gun : MonoBehaviour
         }
     }
 
-    private void CreateBulletInstance()
+    protected void CreateBulletInstance()
     {
         LoadBulletPrefab();
         bullet = Instantiate(bulletPrefab, transform.position + transform.up / DistanceBetweenBulletAndObject, transform.rotation);
     }
 
-    public void Shot()
-    {
-        CreateBulletInstance();
-        bullet.GetComponent<Bullet>().BulletParamsInit();
-    }
+    public abstract void Shot();
 }

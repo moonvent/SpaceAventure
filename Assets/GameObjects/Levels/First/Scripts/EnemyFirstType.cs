@@ -1,13 +1,10 @@
 using UnityEngine;
 
 
-public class EnemyFirstType : SpaceFlyObject
+public class EnemyFirstType : SpaceFlyEnemyFirstType
 {
     // обхект который нужно приследовать
     private Shuttle shuttle;
-
-    // пушка объекта
-    private Gun gun;
 
     // расстояние до игрока
     private float distanceToPlayer;
@@ -20,7 +17,6 @@ public class EnemyFirstType : SpaceFlyObject
     {
         shuttle = levelShuttle;
         healPoints = ShuttleConstants.ShuttleHealPoints;
-        gun = gameObject.AddComponent<Gun>();
     }
 
     protected override void ChangeNoseDirection()
@@ -48,22 +44,16 @@ public class EnemyFirstType : SpaceFlyObject
 
     }
 
-
-
     // Update is called once per frame
     void FixedUpdate()
     {
         ChangeNoseDirection();
         ChangePosition();
-    }
-
-    public override void Init()
-    {
-        throw new System.NotImplementedException();
+        Shot();
     }
 
     protected override void Shot()
     {
-        throw new System.NotImplementedException();
+        // gun.Shot();
     }
 }
