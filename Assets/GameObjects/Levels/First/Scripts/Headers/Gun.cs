@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class Gun : MonoBehaviour
@@ -25,5 +24,5 @@ public abstract class Gun : MonoBehaviour
         bullet = Instantiate(bulletPrefab, transform.position + transform.up / DistanceBetweenBulletAndObject, transform.rotation);
     }
 
-    public abstract void Shot();
+    public virtual void Shot() { }
 }

@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 
 public class SpaceFlyShuttle : SpaceFlyObject
 {
@@ -15,6 +11,5 @@ public class SpaceFlyShuttle : SpaceFlyObject
     {
         gun = gameObject.AddComponent<ShuttleGun>();
     }
-
 
 }

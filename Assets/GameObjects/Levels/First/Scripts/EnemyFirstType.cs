@@ -1,7 +1,7 @@
 using UnityEngine;
 
 
-public class EnemyFirstType : SpaceFlyEnemyFirstType
+public class EnemyFirstType : SpaceFlyObject
 {
     // обхект который нужно приследовать
     private Shuttle shuttle;
@@ -13,10 +13,19 @@ public class EnemyFirstType : SpaceFlyEnemyFirstType
     {
     }
 
-    public override void Init(Shuttle levelShuttle)
+    protected EnemyFirstTypeGun gun;
+
+    public void InitEnemyGun()
     {
+        gun = gameObject.AddComponent<EnemyFirstTypeGun>();
+    }
+
+    public void Init(Shuttle levelShuttle)
+    {
+        InitEnemyGun();
         shuttle = levelShuttle;
-        healPoints = ShuttleConstants.ShuttleHealPoints;
+        healPoints = EnemyFirstTypeConstants.HealPoints;
+        StartCoroutine(gun.EnemyShot());
     }
 
     protected override void ChangeNoseDirection()
@@ -52,8 +61,8 @@ public class EnemyFirstType : SpaceFlyEnemyFirstType
         Shot();
     }
 
-    protected override void Shot()
-    {
-        // gun.Shot();
-    }
+    // protected override void Shot()
+    // {
+    //     gun.Shot();
+    // }
 }

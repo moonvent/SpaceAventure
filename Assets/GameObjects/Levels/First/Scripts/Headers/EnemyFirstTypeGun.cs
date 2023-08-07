@@ -1,22 +1,33 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
+/// <summary>
+/// Пушка для врага
+/// </summary>
 public class EnemyFirstTypeGun : Gun
 {
-    private void SeriesOfShots()
+    /// <summary>
+    /// Длина - кол-во снарядов
+    /// </summary>
+    int[] shotsAmount = { 1, 1, 1 };
+
+    private void OneShot()
     {
         CreateBulletInstance();
         bullet.GetComponent<Bullet>().BulletParamsInit();
     }
 
-    public override void Shot()
+    public IEnumerator EnemyShot()
     {
         while (true)
         {
-            SeriesOfShots();
-
+            yield return new WaitForSeconds(1f);
+            foreach (int item in shotsAmount)
+            {
+                OneShot();
+                yield return new WaitForSeconds(0.3f);
+            }
         }
     }
 }

@@ -50,6 +50,26 @@ public class LevelMainScript : MonoBehaviour
     {
     }
 
+
+    private Vector2 CalculateSpawnPoint()
+    {
+        Camera mainCamera = Camera.main;
+
+        // Определить границы камеры
+        float halfHeight = mainCamera.orthographicSize;
+        float halfWidth = mainCamera.aspect * halfHeight;
+        float xMin = mainCamera.transform.position.x - halfWidth;
+        float xMax = mainCamera.transform.position.x + halfWidth;
+        float yMin = mainCamera.transform.position.y - halfHeight;
+        float yMax = mainCamera.transform.position.y + halfHeight;
+
+        // Выбрать позицию за пределами видимой области
+        Vector2 spawnPosition = new Vector2(xMax + 1, yMin - 1);
+
+        // Создать экземпляр объекта на выбранной позиции
+        return spawnPosition;
+    }
+
     IEnumerator SpawnEnemy()
     {
         // This is an infinite loop, be careful with these!
@@ -57,11 +77,11 @@ public class LevelMainScript : MonoBehaviour
         {
             // This instantiates a new object at the position (0, 0, 0) with no rotation
             Debug.Log("spawn new");
-            GameObject newEnemy = Instantiate(enemyPrefab, new Vector2(0, 0), Quaternion.identity);
+            GameObject newEnemy = Instantiate(enemyPrefab, CalculateSpawnPoint(), Quaternion.identity);
             newEnemy.GetComponent<EnemyFirstType>().Init(shuttle);
 
             // This pauses the Coroutine for 1 second
-            yield return new WaitForSeconds(20f);
+            yield return new WaitForSeconds(10f);
         }
     }
 

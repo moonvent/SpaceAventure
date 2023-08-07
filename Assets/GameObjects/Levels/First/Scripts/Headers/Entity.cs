@@ -16,7 +16,6 @@ public class Entity : MonoBehaviour
     public void descreaseHealPoints(int decreaseValue)
     {
         healPoints -= decreaseValue;
-        Debug.Log(healPoints);
 
         if (healPoints <= 0)
         {
