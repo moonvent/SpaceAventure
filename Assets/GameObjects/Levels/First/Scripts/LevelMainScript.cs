@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using UnityEngine;
 
 
@@ -14,6 +15,25 @@ public class LevelMainScript : MonoBehaviour
     // временный объект врага 
     private EnemyFirstType enemyFirstType;
 
+    // позиция спавна врага
+    private Vector2 enemySpawnPosition;
+
+    // теущее состояние камеры
+    private Camera mainCamera;
+
+    // стороны для спавна
+    private LevelMainScriptConstant.SpawnSides[] spawnSides;
+
+    // сторона на которой заспавнится враг
+    private LevelMainScriptConstant.SpawnSides spawnSide;
+
+    // объект рандома
+    private System.Random random;
+
+    // рандомные точки спавна
+    private float randomYPointSpawn;
+    private float randomXPointSpawn;
+
     private Shuttle LoadShuttle()
     {
         GameObject ShuttlePrefab = Instantiate(Resources.Load<GameObject>("Levels/First/Prefabs/shuffle_v2"));
@@ -27,12 +47,21 @@ public class LevelMainScript : MonoBehaviour
         return enemyPrefab.GetComponent<EnemyFirstType>();
     }
 
-
-    void Awake()
+    private void Init()
     {
+
         Debug.Log("level script awake");
         shuttle = LoadShuttle();
         enemyFirstType = LoadEnemyFirstType();
+        mainCamera = Camera.main;
+        spawnSides = (LevelMainScriptConstant.SpawnSides[])Enum.GetValues(typeof(LevelMainScriptConstant.SpawnSides));
+        random = new System.Random();
+    }
+
+
+    void Awake()
+    {
+        Init();
     }
 
     // Start is called before the first frame update
@@ -53,8 +82,6 @@ public class LevelMainScript : MonoBehaviour
 
     private Vector2 CalculateSpawnPoint()
     {
-        Camera mainCamera = Camera.main;
-
         // Определить границы камеры
         float halfHeight = mainCamera.orthographicSize;
         float halfWidth = mainCamera.aspect * halfHeight;
@@ -64,10 +91,30 @@ public class LevelMainScript : MonoBehaviour
         float yMax = mainCamera.transform.position.y + halfHeight;
 
         // Выбрать позицию за пределами видимой области
-        Vector2 spawnPosition = new Vector2(xMax + 1, yMin - 1);
+        spawnSide = spawnSides[random.Next(spawnSides.Length)];
+
+        randomYPointSpawn = yMin + (float)random.NextDouble() * yMax;
+        randomXPointSpawn = xMin + (float)random.NextDouble() * xMax;
+
+        switch (spawnSide)
+        {
+            case LevelMainScriptConstant.SpawnSides.Left:
+                enemySpawnPosition = new Vector2(xMin - 1, randomYPointSpawn);
+                break;
+            case LevelMainScriptConstant.SpawnSides.Right:
+                enemySpawnPosition = new Vector2(xMax + 1, randomYPointSpawn);
+                break;
+            case LevelMainScriptConstant.SpawnSides.Up:
+                enemySpawnPosition = new Vector2(randomXPointSpawn, yMin - 1);
+                break;
+            case LevelMainScriptConstant.SpawnSides.Down:
+                enemySpawnPosition = new Vector2(randomXPointSpawn, yMax + 1);
+                break;
+        }
+
 
         // Создать экземпляр объекта на выбранной позиции
-        return spawnPosition;
+        return enemySpawnPosition;
     }
 
     IEnumerator SpawnEnemy()
@@ -81,7 +128,7 @@ public class LevelMainScript : MonoBehaviour
             newEnemy.GetComponent<EnemyFirstType>().Init(shuttle);
 
             // This pauses the Coroutine for 1 second
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(1f);
         }
     }
 

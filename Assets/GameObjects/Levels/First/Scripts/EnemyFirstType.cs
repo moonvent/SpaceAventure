@@ -60,9 +60,4 @@ public class EnemyFirstType : SpaceFlyObject
         ChangePosition();
         Shot();
     }
-
-    // protected override void Shot()
-    // {
-    //     gun.Shot();
-    // }
 }

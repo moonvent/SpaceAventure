@@ -41,10 +41,12 @@ public class Bullet : Entity
         Destroy(gameObject);
         collisionTag = collision.gameObject.tag;
 
-        // collisionObject = collision.gameObject;
-        collisionEntity = collision.gameObject.GetComponent<Entity>();
-
-        collisionEntity.descreaseHealPoints(bulletDamage);
+        collisionObject = collision.gameObject;
+        if (collisionTag != BulletConstants.BulletTag)
+        {
+            collisionEntity = collision.gameObject.GetComponent<Entity>();
+            collisionEntity.descreaseHealPoints(bulletDamage);
+        }
     }
 
     /// <summary>
