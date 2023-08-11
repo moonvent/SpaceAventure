@@ -10,7 +10,7 @@ public class EnemyFirstTypeGun : Gun
     /// <summary>
     /// Длина - кол-во снарядов
     /// </summary>
-    int[] shotsAmount = { 1, 1, 1 };
+    private readonly static int[] shotsAmount = { 1, 1, 1 };
 
     private void OneShot()
     {
@@ -22,11 +22,11 @@ public class EnemyFirstTypeGun : Gun
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(0.3f);
             foreach (int item in shotsAmount)
             {
                 OneShot();
-                yield return new WaitForSeconds(0.3f);
+                yield return new WaitForSeconds(0.15f);
             }
         }
     }

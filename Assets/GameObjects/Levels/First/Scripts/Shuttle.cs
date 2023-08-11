@@ -1,8 +1,12 @@
 using UnityEngine;
 
 
-public class Shuttle : SpaceFlyShuttle
+public class Shuttle : SpaceFlyObject
 {
+
+    // пушка объекта
+    protected ShuttleGun gun;
+
     // скорость шатла
     private const float ShuttleMovementSpeed = 5f;
 
@@ -30,11 +34,11 @@ public class Shuttle : SpaceFlyShuttle
         Shot();
     }
 
-    public override void Init()
+    public void Init()
     {
         Debug.Log("shuttle created");
+        gun = gameObject.AddComponent<ShuttleGun>();
         healPoints = ShuttleConstants.ShuttleHealPoints;
-        base.Init();
     }
 
     // удержание носа шатла

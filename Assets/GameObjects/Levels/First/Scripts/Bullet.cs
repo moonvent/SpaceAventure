@@ -18,14 +18,20 @@ public class Bullet : Entity
     // сущность объекта с которым произошла коллизия
     private Entity collisionEntity;
 
+    // объект с которым произошла коллизия
+    private GameObject collisionObject;
+
+    // урон пули
+    private int bulletDamage;
+
     // тег объекта с которым произошла коллизия
     private string collisionTag;
 
     void Awake()
     {
-        healPoints = 1;
+        healPoints = BulletConstants.BulletHeal;
+        bulletDamage = BulletConstants.BulletDamage;
     }
-
 
     /// <summary>
     /// При коллизии с каким-либо объектом, мы отнимаем у объекта жизнь, и уничтожаем пулю
@@ -33,19 +39,12 @@ public class Bullet : Entity
     void OnCollisionEnter2D(Collision2D collision)
     {
         Destroy(gameObject);
-
         collisionTag = collision.gameObject.tag;
 
-        // if (collisionTag == BulletConstants.BulletTag)
-        //     return;
-        //
-        // else if (collisionTag == ShuttleConstants.ShuttleTag)
-        // {
-        //
-        // }
+        // collisionObject = collision.gameObject;
         collisionEntity = collision.gameObject.GetComponent<Entity>();
-        collisionEntity.descreaseHealPoints(BulletConstants.BulletDamage);
 
+        collisionEntity.descreaseHealPoints(bulletDamage);
     }
 
     /// <summary>
