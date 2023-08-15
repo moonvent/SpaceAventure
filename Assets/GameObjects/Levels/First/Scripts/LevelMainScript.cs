@@ -7,7 +7,7 @@ public class LevelMainScript : MonoBehaviour
 {
 
     // объект коробля
-    private Shuttle shuttle;
+    public Shuttle shuttle;
 
     // объект врага первого типа
     private GameObject enemyPrefab;
@@ -34,6 +34,9 @@ public class LevelMainScript : MonoBehaviour
     private float randomYPointSpawn;
     private float randomXPointSpawn;
 
+    // количество убийств
+    public int score;
+
     private Shuttle LoadShuttle()
     {
         GameObject ShuttlePrefab = Instantiate(Resources.Load<GameObject>("Levels/First/Prefabs/shuffle_v2"));
@@ -51,6 +54,7 @@ public class LevelMainScript : MonoBehaviour
     {
 
         Debug.Log("level script awake");
+        score = 0;
         shuttle = LoadShuttle();
         enemyFirstType = LoadEnemyFirstType();
         mainCamera = Camera.main;
@@ -125,7 +129,7 @@ public class LevelMainScript : MonoBehaviour
             // This instantiates a new object at the position (0, 0, 0) with no rotation
             Debug.Log("spawn new");
             GameObject newEnemy = Instantiate(enemyPrefab, CalculateSpawnPoint(), Quaternion.identity);
-            newEnemy.GetComponent<EnemyFirstType>().Init(shuttle);
+            newEnemy.GetComponent<EnemyFirstType>().Init(this);
 
             // This pauses the Coroutine for 1 second
             yield return new WaitForSeconds(1f);

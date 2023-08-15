@@ -8,6 +8,15 @@ using UnityEngine;
 /// </summary>
 public class Entity : MonoBehaviour
 {
+    protected int scorePoints;
+
+    protected LevelMainScript level;
+
+    protected void ObjectDestroied()
+    {
+        level.score += scorePoints;
+        Debug.Log(level.score);
+    }
 
     protected int healPoints = 3;
 
@@ -22,6 +31,7 @@ public class Entity : MonoBehaviour
             isAlive = false;
             // throw new EntityIsDead();
             Destroy(gameObject);
+            ObjectDestroied();
         }
     }
 }

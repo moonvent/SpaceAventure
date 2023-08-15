@@ -37,6 +37,7 @@ public class Shuttle : SpaceFlyObject
     public void Init()
     {
         Debug.Log("shuttle created");
+        scorePoints = 0;
         gun = gameObject.AddComponent<ShuttleGun>();
         healPoints = ShuttleConstants.ShuttleHealPoints;
     }

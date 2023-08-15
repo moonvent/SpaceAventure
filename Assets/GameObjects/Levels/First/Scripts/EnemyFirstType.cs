@@ -9,10 +9,6 @@ public class EnemyFirstType : SpaceFlyObject
     // расстояние до игрока
     private float distanceToPlayer;
 
-    void Awake()
-    {
-    }
-
     protected EnemyFirstTypeGun gun;
 
     public void InitEnemyGun()
@@ -20,11 +16,13 @@ public class EnemyFirstType : SpaceFlyObject
         gun = gameObject.AddComponent<EnemyFirstTypeGun>();
     }
 
-    public void Init(Shuttle levelShuttle)
+    public void Init(LevelMainScript mainLevel)
     {
         InitEnemyGun();
-        shuttle = levelShuttle;
+        level = mainLevel;
+        shuttle = mainLevel.shuttle;
         healPoints = EnemyFirstTypeConstants.HealPoints;
+        scorePoints = EnemyFirstTypeConstants.ScorePoints;
         StartCoroutine(gun.EnemyShot());
     }
 
@@ -39,13 +37,17 @@ public class EnemyFirstType : SpaceFlyObject
         transform.up = direction;
     }
 
-    // перемещение шатла
+    // перемещение врага
     protected override void ChangePosition()
     {
         distanceToPlayer = Vector3.Distance(transform.position, shuttle.transform.position);
 
+        // Если расстояние меньше или равно stopDistance, прекратим движение
+        if (distanceToPlayer <= EnemyFirstTypeConstants.StopDistanceFolow) return;
+
         // Вычисляем направление к игроку
         Vector3 direction = shuttle.transform.position - transform.position;
+
         direction.Normalize();
 
         // Двигаем врага в направлении игрока
