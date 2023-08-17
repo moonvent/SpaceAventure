@@ -22,7 +22,7 @@ public class EnemyFirstType : SpaceFlyObject
         level = mainLevel;
         shuttle = mainLevel.shuttle;
         healPoints = EnemyFirstTypeConstants.HealPoints;
-        scorePoints = EnemyFirstTypeConstants.ScorePoints;
+        scorePointsForReward = EnemyFirstTypeConstants.ScorePoints;
         StartCoroutine(gun.EnemyShot());
     }
 

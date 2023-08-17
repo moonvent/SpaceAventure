@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 
 public class Shuttle : SpaceFlyObject
@@ -21,10 +22,12 @@ public class Shuttle : SpaceFlyObject
     // объект шатла
     private GameObject shuttle;
 
+    // надпись о хпшках шатла
+    private TMP_Text hpText;
+
     // задаем первичные параметры для класса
     void Awake()
     {
-        Init();
     }
 
     void FixedUpdate()
@@ -34,12 +37,18 @@ public class Shuttle : SpaceFlyObject
         Shot();
     }
 
-    public void Init()
+    public void Init(TMP_Text levelHpText)
     {
         Debug.Log("shuttle created");
-        scorePoints = 0;
+        scorePointsForReward = 0;
         gun = gameObject.AddComponent<ShuttleGun>();
         healPoints = ShuttleConstants.ShuttleHealPoints;
+        hpText = levelHpText;
+    }
+
+    protected override void additionalDecreasingHealPoints()
+    {
+        hpText.text = string.Format(ShuttleConstants.HealPointText, healPoints);
     }
 
     // удержание носа шатла

@@ -1,6 +1,7 @@
 using System.Collections;
 using System;
 using UnityEngine;
+using TMPro;
 
 
 public class LevelMainScript : MonoBehaviour
@@ -34,13 +35,34 @@ public class LevelMainScript : MonoBehaviour
     private float randomYPointSpawn;
     private float randomXPointSpawn;
 
-    // количество убийств
-    public int score;
+    private TMP_Text scoreText;
+    private TMP_Text hpText;
 
-    private Shuttle LoadShuttle()
+    // счёт уровня
+    private int _Score;
+
+    // интерфейс
+    private GameObject uiCanvas;
+
+    // количество убийств
+    public int Score
+    {
+        get
+        {
+            return _Score;
+        }
+        set
+        {
+            _Score = value;
+            scoreText.text = string.Format(LevelMainScriptConstant.ScoreText, Score);
+        }
+    }
+
+    private void LoadShuttle()
     {
         GameObject ShuttlePrefab = Instantiate(Resources.Load<GameObject>("Levels/First/Prefabs/shuffle_v2"));
-        return ShuttlePrefab.GetComponent<Shuttle>();
+        shuttle = ShuttlePrefab.GetComponent<Shuttle>();
+        shuttle.Init(hpText);
     }
 
     private EnemyFirstType LoadEnemyFirstType()
@@ -54,8 +76,14 @@ public class LevelMainScript : MonoBehaviour
     {
 
         Debug.Log("level script awake");
-        score = 0;
-        shuttle = LoadShuttle();
+        uiCanvas = GameObject.Find("UiCanvas");
+        TMP_Text[] uiTexts = uiCanvas.GetComponentsInChildren<TMP_Text>();
+        scoreText = uiTexts[0];
+        hpText = uiTexts[1];
+
+        Score = 0;
+
+        LoadShuttle();
         enemyFirstType = LoadEnemyFirstType();
         mainCamera = Camera.main;
         spawnSides = (LevelMainScriptConstant.SpawnSides[])Enum.GetValues(typeof(LevelMainScriptConstant.SpawnSides));

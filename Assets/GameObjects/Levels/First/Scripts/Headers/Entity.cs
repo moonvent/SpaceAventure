@@ -8,14 +8,13 @@ using UnityEngine;
 /// </summary>
 public class Entity : MonoBehaviour
 {
-    protected int scorePoints;
+    protected int scorePointsForReward;
 
     protected LevelMainScript level;
 
     protected void ObjectDestroied()
     {
-        level.score += scorePoints;
-        Debug.Log(level.score);
+        level.Score += scorePointsForReward;
     }
 
     protected int healPoints = 3;
@@ -33,5 +32,15 @@ public class Entity : MonoBehaviour
             Destroy(gameObject);
             ObjectDestroied();
         }
+
+        additionalDecreasingHealPoints();
+    }
+
+    /// <summary>
+    /// Дополнительная функция, которая вызывается когда уменьшается хп
+    /// </summary>
+    protected virtual void additionalDecreasingHealPoints()
+    {
+
     }
 }
