@@ -89,6 +89,11 @@ public class Shuttle : SpaceFlyObject
 
     }
 
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+
+    }
+
     // выстрел шатла
     protected override void Shot()
     {

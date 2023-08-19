@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 
@@ -19,7 +17,7 @@ public class Entity : MonoBehaviour
 
     protected int healPoints = 3;
 
-    private bool isAlive;
+    protected bool isAlive = true;
 
     public void descreaseHealPoints(int decreaseValue)
     {

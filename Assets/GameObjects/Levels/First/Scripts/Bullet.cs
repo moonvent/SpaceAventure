@@ -45,6 +45,8 @@ public class Bullet : Entity
         if (collisionTag != BulletConstants.BulletTag)
         {
             collisionEntity = collision.gameObject.GetComponent<Entity>();
+
+            // if (collisionEntity)
             collisionEntity.descreaseHealPoints(bulletDamage);
         }
     }

@@ -155,7 +155,6 @@ public class LevelMainScript : MonoBehaviour
         while (true)
         {
             // This instantiates a new object at the position (0, 0, 0) with no rotation
-            Debug.Log("spawn new");
             GameObject newEnemy = Instantiate(enemyPrefab, CalculateSpawnPoint(), Quaternion.identity);
             newEnemy.GetComponent<EnemyFirstType>().Init(this);
 

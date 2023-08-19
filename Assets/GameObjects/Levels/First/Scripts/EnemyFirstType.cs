@@ -11,6 +11,20 @@ public class EnemyFirstType : SpaceFlyObject
 
     protected EnemyFirstTypeGun gun;
 
+    // префаб разрушенного врага 
+    private static GameObject destroyedFirstEnemyPrefab;
+
+    // объект разрушенного врага
+    private GameObject destroyedFirstEnemyObject;
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        ChangeNoseDirection();
+        ChangePosition();
+        Shot();
+    }
+
     public void InitEnemyGun()
     {
         gun = gameObject.AddComponent<EnemyFirstTypeGun>();
@@ -19,6 +33,8 @@ public class EnemyFirstType : SpaceFlyObject
     public void Init(LevelMainScript mainLevel)
     {
         InitEnemyGun();
+        if (!destroyedFirstEnemyPrefab)
+            destroyedFirstEnemyPrefab = Resources.Load<GameObject>("Levels/First/Prefabs/destroyedFirstEnemy");
         level = mainLevel;
         shuttle = mainLevel.shuttle;
         healPoints = EnemyFirstTypeConstants.HealPoints;
@@ -52,14 +68,14 @@ public class EnemyFirstType : SpaceFlyObject
 
         // Двигаем врага в направлении игрока
         transform.position += direction * EnemyFirstTypeConstants.Speed * Time.deltaTime;
-
     }
 
-    // Update is called once per frame
-    void FixedUpdate()
+    protected override void additionalDecreasingHealPoints()
     {
-        ChangeNoseDirection();
-        ChangePosition();
-        Shot();
+        if (!isAlive)
+        {
+            destroyedFirstEnemyObject = Instantiate(destroyedFirstEnemyPrefab, gameObject.transform.position, Quaternion.identity);
+            destroyedFirstEnemyObject.GetComponent<DestroyedFirstEnemy>().Init(level);
+        }
     }
 }
