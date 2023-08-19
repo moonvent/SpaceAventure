@@ -22,13 +22,17 @@ public class Shuttle : SpaceFlyObject
     // объект шатла
     private GameObject shuttle;
 
+    // объект с которым происходит коллизия
+    private GameObject collisionObject;
+
+    // сущность с которой происходит коллизия
+    private Entity collisionEntity;
+
+    // тег объекта с которым произошла коллизия
+    private string collisionTag;
+
     // надпись о хпшках шатла
     private TMP_Text hpText;
-
-    // задаем первичные параметры для класса
-    void Awake()
-    {
-    }
 
     void FixedUpdate()
     {
@@ -89,8 +93,18 @@ public class Shuttle : SpaceFlyObject
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(UnityEngine.Collider2D collision)
     {
+        collisionTag = collision.gameObject.tag;
+
+        collisionObject = collision.gameObject;
+
+        if (collisionTag == ShuttleConstants.DestroyedFirstTypeTag)
+        {
+            Debug.Log(collisionTag);
+            healPoints += collision.gameObject.GetComponent<Entity>().healedPoints;
+            Destroy(collisionObject);
+        }
 
     }
 

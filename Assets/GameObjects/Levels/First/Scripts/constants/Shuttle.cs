@@ -4,6 +4,8 @@ public static class ShuttleConstants
 
     public static int ShuttleHealPoints = 100;
     public static string HealPointText = "HP: {0}";
+
+    public static string DestroyedFirstTypeTag = "DestroyedFirstEnemy";
 }
 
 
