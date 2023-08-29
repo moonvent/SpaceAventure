@@ -34,6 +34,9 @@ public class Shuttle : SpaceFlyObject
     // надпись о хпшках шатла
     private TMP_Text hpText;
 
+    // новое кол-во хп после регенерации об что-то
+    private int newHealPoints;
+
     void FixedUpdate()
     {
         ChangeNoseDirection();
@@ -101,9 +104,12 @@ public class Shuttle : SpaceFlyObject
 
         if (collisionTag == ShuttleConstants.DestroyedFirstTypeTag)
         {
-            Debug.Log(collisionTag);
-            healPoints += collision.gameObject.GetComponent<Entity>().healedPoints;
-            Destroy(collisionObject);
+            newHealPoints = healPoints + collision.gameObject.GetComponent<Entity>().healedPoints;
+            if (newHealPoints <= ShuttleConstants.ShuttleHealPoints)
+            {
+              healPoints = newHealPoints;
+              Destroy(collisionObject);
+            }
         }
 
     }

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 
 
 public class EnemyFirstType : SpaceFlyObject
@@ -17,6 +18,9 @@ public class EnemyFirstType : SpaceFlyObject
     // объект разрушенного врага
     private GameObject destroyedFirstEnemyObject;
 
+    // рандомайзер для будущих нужд
+    private System.Random randomizer;
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -33,6 +37,7 @@ public class EnemyFirstType : SpaceFlyObject
     public void Init(LevelMainScript mainLevel)
     {
         InitEnemyGun();
+        randomizer = new System.Random();
         if (!destroyedFirstEnemyPrefab)
             destroyedFirstEnemyPrefab = Resources.Load<GameObject>("Levels/First/Prefabs/destroyedFirstEnemy");
         level = mainLevel;
@@ -74,8 +79,11 @@ public class EnemyFirstType : SpaceFlyObject
     {
         if (!isAlive)
         {
-            destroyedFirstEnemyObject = Instantiate(destroyedFirstEnemyPrefab, gameObject.transform.position, Quaternion.identity);
-            destroyedFirstEnemyObject.GetComponent<DestroyedFirstEnemy>().Init(level);
+            if (randomizer.NextDouble() < DestroyedFirstEnemyConstants.ChanseToSpawn)
+            {
+                destroyedFirstEnemyObject = Instantiate(destroyedFirstEnemyPrefab, gameObject.transform.position, Quaternion.identity);
+                destroyedFirstEnemyObject.GetComponent<DestroyedFirstEnemy>().Init(level);
+            }
         }
     }
 }
