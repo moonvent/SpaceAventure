@@ -44,6 +44,12 @@ public class LevelMainScript : MonoBehaviour
     // интерфейс
     private GameObject uiCanvas;
 
+    // текущая стадия в уровне
+    private LevelStages currentStage;
+
+    // кешированный тип Фаз 
+    private Type levelStagesType;
+
     // количество убийств
     public int Score
     {
@@ -55,6 +61,16 @@ public class LevelMainScript : MonoBehaviour
         {
             _Score = value;
             scoreText.text = string.Format(LevelMainScriptConstant.ScoreText, Score);
+
+            if (_Score % SpawnListContants.stepToUpStage == 0)
+            {
+                if (Enum.IsDefined(levelStagesType, _Score))
+                {
+                    currentStage = (LevelStages)_Score;
+                    Debug.Log(currentStage);
+                }
+            }
+
         }
     }
 
@@ -80,6 +96,9 @@ public class LevelMainScript : MonoBehaviour
         TMP_Text[] uiTexts = uiCanvas.GetComponentsInChildren<TMP_Text>();
         scoreText = uiTexts[0];
         hpText = uiTexts[1];
+
+        levelStagesType = typeof(LevelStages);
+        currentStage = LevelStages.First;
 
         Score = 0;
 
@@ -143,7 +162,6 @@ public class LevelMainScript : MonoBehaviour
                 enemySpawnPosition = new Vector2(randomXPointSpawn, yMax + 1);
                 break;
         }
-
 
         // Создать экземпляр объекта на выбранной позиции
         return enemySpawnPosition;

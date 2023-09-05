@@ -21,6 +21,15 @@ public class EnemyFirstType : SpaceFlyObject
     // рандомайзер для будущих нужд
     private System.Random randomizer;
 
+    private GameObject collisionObject;
+
+    // сущность с которой происходит коллизия
+    private Entity collisionEntity;
+
+    // тег объекта с которым произошла коллизия
+    private string collisionTag;
+
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -38,8 +47,10 @@ public class EnemyFirstType : SpaceFlyObject
     {
         InitEnemyGun();
         randomizer = new System.Random();
+
         if (!destroyedFirstEnemyPrefab)
             destroyedFirstEnemyPrefab = Resources.Load<GameObject>("Levels/First/Prefabs/destroyedFirstEnemy");
+
         level = mainLevel;
         shuttle = mainLevel.shuttle;
         healPoints = EnemyFirstTypeConstants.HealPoints;
@@ -86,4 +97,25 @@ public class EnemyFirstType : SpaceFlyObject
             }
         }
     }
+
+    // void OnTriggerEnter2D(UnityEngine.Collider2D collision)
+    // {
+    //     collisionTag = collision.gameObject.tag;
+    //
+    //     collisionObject = collision.gameObject;
+    //
+    //     if (collisionTag != "bullet")
+    //         Debug.Log(collisionTag);
+    // }
+    //
+    // void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     collisionTag = collision.gameObject.tag;
+    //
+    //     collisionObject = collision.gameObject;
+    //
+    //     if (collisionTag != "bullet")
+    //         Debug.Log(collisionTag);
+    // }
+
 }

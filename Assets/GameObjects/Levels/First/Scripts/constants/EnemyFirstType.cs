@@ -6,6 +6,8 @@ public static class EnemyFirstTypeConstants
     public static float StopDistanceFolow = 3.0f;
 
     public static int ScorePoints = 1;
+
+    public static string Tag = "enemyFirstType";
 }
 
 

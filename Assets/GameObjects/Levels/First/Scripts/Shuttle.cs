@@ -37,6 +37,9 @@ public class Shuttle : SpaceFlyObject
     // новое кол-во хп после регенерации об что-то
     private int newHealPoints;
 
+    // переменная для DRY
+    private float speedWithTime;
+
     void FixedUpdate()
     {
         ChangeNoseDirection();
@@ -83,13 +86,15 @@ public class Shuttle : SpaceFlyObject
         leftButtonPressed = Input.GetKey(KeyCode.A);
         rightButtonPressed = Input.GetKey(KeyCode.D);
 
+        speedWithTime = ShuttleMovementSpeed * Time.deltaTime;
+
         if (upButtonPressed || downButtonPressed)
         {
-            position.y += (upButtonPressed ? 1 : -1) * ShuttleMovementSpeed * Time.deltaTime;
+            position.y += (upButtonPressed ? 1 : -1) * speedWithTime;
         }
         if (rightButtonPressed || leftButtonPressed)
         {
-            position.x += (rightButtonPressed ? 1 : -1) * ShuttleMovementSpeed * Time.deltaTime;
+            position.x += (rightButtonPressed ? 1 : -1) * speedWithTime;
         }
 
         transform.position = position;
@@ -102,17 +107,37 @@ public class Shuttle : SpaceFlyObject
 
         collisionObject = collision.gameObject;
 
+        // if (collisionTag != "bullet")
+        //     Debug.Log(collisionTag);
         if (collisionTag == ShuttleConstants.DestroyedFirstTypeTag)
         {
             newHealPoints = healPoints + collision.gameObject.GetComponent<Entity>().healedPoints;
             if (newHealPoints <= ShuttleConstants.ShuttleHealPoints)
             {
-              healPoints = newHealPoints;
-              Destroy(collisionObject);
+                healPoints = newHealPoints;
+                Destroy(collisionObject);
             }
         }
-
     }
+
+    // if I want to make a BOOM when shuffle with other guys is collide
+    // void OnCollisionEnter2D(Collision2D collision)
+    // {
+    //     collisionTag = collision.gameObject.tag;
+    //
+    //     collisionObject = collision.gameObject;
+    //
+    //     if (collisionTag == EnemyFirstTypeConstants.Tag)
+    //     {
+    //         newHealPoints = healPoints + collision.gameObject.GetComponent<Entity>().healedPoints;
+    //         if (newHealPoints <= ShuttleConstants.ShuttleHealPoints)
+    //         {
+    //             healPoints = newHealPoints;
+    //             Destroy(collisionObject);
+    //         }
+    //     }
+    //
+    // }
 
     // выстрел шатла
     protected override void Shot()
