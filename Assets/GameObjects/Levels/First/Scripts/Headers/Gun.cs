@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public abstract class Gun : MonoBehaviour
@@ -23,5 +24,12 @@ public abstract class Gun : MonoBehaviour
         bullet = Instantiate(bulletPrefab, transform.position + transform.up / DistanceBetweenBulletAndObject, transform.rotation);
     }
 
+    // выстрел для игрока
     public virtual void Shot() { }
+
+    // выстрел для врага
+    public virtual IEnumerator EnemyShot()
+    {
+        yield return null;
+    }
 }

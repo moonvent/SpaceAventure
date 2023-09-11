@@ -1,60 +1,28 @@
 using UnityEngine;
-using System;
 
 
-public class EnemyFirstType : SpaceFlyObject
+public class EnemyFirstType : Enemy
 {
-    // обхект который нужно приследовать
-    private Shuttle shuttle;
-
-    // расстояние до игрока
-    private float distanceToPlayer;
-
-    protected EnemyFirstTypeGun gun;
-
-    // префаб разрушенного врага 
-    private static GameObject destroyedFirstEnemyPrefab;
-
-    // объект разрушенного врага
-    private GameObject destroyedFirstEnemyObject;
-
-    // рандомайзер для будущих нужд
-    private System.Random randomizer;
-
-    private GameObject collisionObject;
-
-    // сущность с которой происходит коллизия
-    private Entity collisionEntity;
-
-    // тег объекта с которым произошла коллизия
-    private string collisionTag;
-
-
-    // Update is called once per frame
     void FixedUpdate()
     {
         ChangeNoseDirection();
         ChangePosition();
-        Shot();
     }
 
-    public void InitEnemyGun()
+    public override void InitEnemyGun()
     {
         gun = gameObject.AddComponent<EnemyFirstTypeGun>();
     }
 
     public void Init(LevelMainScript mainLevel)
     {
-        InitEnemyGun();
-        randomizer = new System.Random();
+        base.Init(mainLevel);
 
-        if (!destroyedFirstEnemyPrefab)
-            destroyedFirstEnemyPrefab = Resources.Load<GameObject>("Levels/First/Prefabs/destroyedFirstEnemy");
-
-        level = mainLevel;
-        shuttle = mainLevel.shuttle;
         healPoints = EnemyFirstTypeConstants.HealPoints;
         scorePointsForReward = EnemyFirstTypeConstants.ScorePoints;
+
+        destroyedEnemyPrefab = Resources.Load<GameObject>("Levels/First/Prefabs/destroyedFirstEnemy");
+
         StartCoroutine(gun.EnemyShot());
     }
 
@@ -91,8 +59,8 @@ public class EnemyFirstType : SpaceFlyObject
         {
             if (randomizer.NextDouble() < DestroyedFirstEnemyConstants.ChanseToSpawn)
             {
-                destroyedFirstEnemyObject = Instantiate(destroyedFirstEnemyPrefab, gameObject.transform.position, Quaternion.identity);
-                destroyedFirstEnemyObject.GetComponent<DestroyedFirstEnemy>().Init(level);
+                destroyedEnemyObject = Instantiate(destroyedEnemyPrefab, gameObject.transform.position, Quaternion.identity);
+                destroyedEnemyObject.GetComponent<DestroyedFirstEnemy>().Init(level);
             }
         }
     }

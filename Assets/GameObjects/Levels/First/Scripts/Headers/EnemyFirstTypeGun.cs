@@ -18,7 +18,7 @@ public class EnemyFirstTypeGun : Gun
         bullet.GetComponent<Bullet>().BulletParamsInit();
     }
 
-    public IEnumerator EnemyShot()
+    public override IEnumerator EnemyShot()
     {
         while (true)
         {
