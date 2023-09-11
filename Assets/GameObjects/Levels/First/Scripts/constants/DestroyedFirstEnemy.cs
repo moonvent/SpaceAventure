@@ -5,5 +5,5 @@ public static class DestroyedFirstEnemyConstants
     public const int HealedPoints = 3;
 
     // шанс на спавн
-    public const float ChanseToSpawn = .35f;
+    public const float ChanseToSpawn = .30f;
 }

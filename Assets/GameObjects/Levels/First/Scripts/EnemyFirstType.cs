@@ -60,7 +60,6 @@ public class EnemyFirstType : SpaceFlyObject
 
     protected override void ChangeNoseDirection()
     {
-
         Vector2 direction = new Vector2(
             shuttle.transform.position.x - transform.position.x,
             shuttle.transform.position.y - transform.position.y
