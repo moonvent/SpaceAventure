@@ -8,11 +8,6 @@ public class EnemyLevelBehavior : MonoBehaviour
     // объект врага первого типа
     private GameObject enemyPrefab;
 
-    private Dictionary<EnemyLevelBehaviorConstant.EnemyType, GameObject> cachedEnemyPrefabs;
-
-    // временный объект врага 
-    private EnemyFirstType enemyFirstType;
-
     // теущее состояние камеры
     private Camera mainCamera;
 
@@ -53,6 +48,9 @@ public class EnemyLevelBehavior : MonoBehaviour
     float spawnX;
     float spawnY;
 
+    // список в котором мы храним все объекты врагов и спавним в зависимости от нужды
+    private SpawnList spawnList;
+
     /// начало спавна врагов
     public void Init(LevelMainScript level)
     {
@@ -72,15 +70,9 @@ public class EnemyLevelBehavior : MonoBehaviour
 
         random = new System.Random();
 
-        enemyFirstType = LoadEnemyFirstType();
-
         spawnSides = (LevelMainScriptConstant.SpawnSides[])Enum.GetValues(typeof(LevelMainScriptConstant.SpawnSides));
 
-        cachedEnemyPrefabs = new Dictionary<EnemyLevelBehaviorConstant.EnemyType, GameObject>
-        {
-            {EnemyLevelBehaviorConstant.EnemyType.First, Resources.Load<GameObject>("Levels/First/Prefabs/enemy")},
-            {EnemyLevelBehaviorConstant.EnemyType.Second, Resources.Load<GameObject>("Levels/First/Prefabs/enemy")},
-        };
+        spawnList = new SpawnList();
 
         StartCoroutine(SpawnEnemy());
     }
@@ -107,13 +99,6 @@ public class EnemyLevelBehavior : MonoBehaviour
     private bool CheckNewStage(int score)
     {
         return score % SpawnListContants.stepToUpStage == 0;
-    }
-
-    private EnemyFirstType LoadEnemyFirstType()
-    {
-        if (!enemyPrefab)
-            enemyPrefab = Resources.Load<GameObject>("Levels/First/Prefabs/enemy");
-        return enemyPrefab.GetComponent<EnemyFirstType>();
     }
 
     private Vector2 CalculateSpawnPoint()
@@ -155,7 +140,9 @@ public class EnemyLevelBehavior : MonoBehaviour
         while (true)
         {
             // This instantiates a new object at the position (0, 0, 0) with no rotation
-            GameObject newEnemy = Instantiate(enemyPrefab, CalculateSpawnPoint(), Quaternion.identity);
+            GameObject newEnemy = Instantiate(spawnList.GetEnemyForCurrentStage(currentStage),
+                CalculateSpawnPoint(),
+                Quaternion.identity);
             newEnemy.GetComponent<EnemyFirstType>().Init(mainLevel);
 
             // This pauses the Coroutine for 1 second

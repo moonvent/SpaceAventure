@@ -120,25 +120,6 @@ public class Shuttle : SpaceFlyObject
         }
     }
 
-    // if I want to make a BOOM when shuffle with other guys is collide
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     collisionTag = collision.gameObject.tag;
-    //
-    //     collisionObject = collision.gameObject;
-    //
-    //     if (collisionTag == EnemyFirstTypeConstants.Tag)
-    //     {
-    //         newHealPoints = healPoints + collision.gameObject.GetComponent<Entity>().healedPoints;
-    //         if (newHealPoints <= ShuttleConstants.ShuttleHealPoints)
-    //         {
-    //             healPoints = newHealPoints;
-    //             Destroy(collisionObject);
-    //         }
-    //     }
-    //
-    // }
-
     // выстрел шатла
     protected override void Shot()
     {

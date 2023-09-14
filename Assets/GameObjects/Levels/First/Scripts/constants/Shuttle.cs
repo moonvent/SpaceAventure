@@ -1,11 +1,11 @@
 public static class ShuttleConstants
 {
-    public static string ShuttleTag = "shuttle";
+    public const string ShuttleTag = "shuttle";
 
-    public static int ShuttleHealPoints = 100;
-    public static string HealPointText = "HP: {0}";
+    public const int ShuttleHealPoints = 100;
+    public const string HealPointText = "HP: {0}";
 
-    public static string DestroyedFirstTypeTag = "DestroyedFirstEnemy";
+    public const string DestroyedFirstTypeTag = "DestroyedFirstEnemy";
 }
 
 

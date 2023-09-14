@@ -1,13 +1,13 @@
 public static class EnemyFirstTypeConstants
 {
-    public static float Speed = 3.5f;
-    public static int HealPoints = 20;
+    public const float Speed = 3.5f;
+    public const int HealPoints = 20;
 
-    public static float StopDistanceFolow = 3.0f;
+    public const float StopDistanceFolow = 3.0f;
 
-    public static int ScorePoints = 1;
+    public const int ScorePoints = 1;
 
-    public static string Tag = "enemyFirstType";
+    public const string Tag = "enemyFirstType";
 }
 
 

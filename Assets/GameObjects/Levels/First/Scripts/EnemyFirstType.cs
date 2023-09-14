@@ -1,6 +1,7 @@
 using UnityEngine;
 
 
+/// враг первого типа
 public class EnemyFirstType : Enemy
 {
     void FixedUpdate()
@@ -64,25 +65,5 @@ public class EnemyFirstType : Enemy
             }
         }
     }
-
-    // void OnTriggerEnter2D(UnityEngine.Collider2D collision)
-    // {
-    //     collisionTag = collision.gameObject.tag;
-    //
-    //     collisionObject = collision.gameObject;
-    //
-    //     if (collisionTag != "bullet")
-    //         Debug.Log(collisionTag);
-    // }
-    //
-    // void OnCollisionEnter2D(Collision2D collision)
-    // {
-    //     collisionTag = collision.gameObject.tag;
-    //
-    //     collisionObject = collision.gameObject;
-    //
-    //     if (collisionTag != "bullet")
-    //         Debug.Log(collisionTag);
-    // }
 
 }
