@@ -13,7 +13,7 @@ public class SpawnList
     private Dictionary<LevelStages, Dictionary<float, GameObject>> spawnRates;
 
     // описание шанса спавна и врага на одном из этапов
-    private Dictionary<float, GameObject> spawnRateWithEnemy;
+    private List<(float, EnemyLevelBehaviorConstant.EnemyType)> spawnRateWithEnemy;
 
     // рандомайзер
     private System.Random randomizer;
@@ -22,14 +22,13 @@ public class SpawnList
     private float nextSpawnRate;
 
     // сто процентов заспавненный враг
-    private GameObject spawnEnemy;
+    private EnemyLevelBehaviorConstant.EnemyType spawnEnemyKey;
 
 
     public SpawnList()
     {
         randomizer = new System.Random();
         InitEnemyPrefabs();
-        FillSpawnRates();
     }
 
     // инициализация вражеских префабов
@@ -42,51 +41,36 @@ public class SpawnList
         };
     }
 
-    private void CreateNewSpawnRateWithEnemy()
-    {
-        spawnRateWithEnemy = new Dictionary<float, GameObject>();
-    }
-
-    private Dictionary<float, GameObject> CreateNewSpawnRateFirstStage()
-    {
-        CreateNewSpawnRateWithEnemy();
-        spawnRateWithEnemy.Add(.99f, cachedEnemyPrefabs[EnemyLevelBehaviorConstant.EnemyType.First]);
-        return spawnRateWithEnemy;
-    }
-
-    private Dictionary<float, GameObject> CreateNewSpawnRateSecondStage()
-    {
-        CreateNewSpawnRateWithEnemy();
-        spawnRateWithEnemy.Add(.4f, cachedEnemyPrefabs[EnemyLevelBehaviorConstant.EnemyType.First]);
-        spawnRateWithEnemy.Add(.6f, cachedEnemyPrefabs[EnemyLevelBehaviorConstant.EnemyType.Second]);
-        return spawnRateWithEnemy;
-    }
-
-    private void FillSpawnRates()
-    {
-        spawnRates = new Dictionary<LevelStages, Dictionary<float, GameObject>>
-        {
-            // { LevelStages.First, CreateNewSpawnRateFirstStage() },
-            { LevelStages.First, CreateNewSpawnRateSecondStage() },
-            { LevelStages.Second, CreateNewSpawnRateSecondStage() }
-        };
-    }
-
     public GameObject GetEnemyForCurrentStage(LevelStages levelStage)
     {
-        spawnRateWithEnemy = spawnRates[levelStage];
+        // spawnRateWithEnemy = spawnRates[levelStage];
+        // nextSpawnRate = (float)randomizer.NextDouble();
+        //
+        // foreach (KeyValuePair<float, GameObject> spawnRate in spawnRateWithEnemy)
+        // {
+        //     if (spawnRate.Key > nextSpawnRate)
+        //     {
+        //         return spawnRate.Value;
+        //     }
+        //     spawnEnemy = spawnRate.Value;
+        //
+        // }
+        // return spawnEnemy;
+
+        spawnRateWithEnemy = SpawnListContants.StageWithSpawnRate[levelStage];
         nextSpawnRate = (float)randomizer.NextDouble();
 
-        foreach (KeyValuePair<float, GameObject> spawnRate in spawnRateWithEnemy)
+        foreach (var (spawnRate, enemyTypeKey) in spawnRateWithEnemy)
         {
-            Debug.Log(nextSpawnRate);
-            if (spawnRate.Key > nextSpawnRate)
+            if (spawnRate > nextSpawnRate)
             {
-                return spawnRate.Value;
+                spawnEnemyKey = enemyTypeKey;
+                break;
             }
-            spawnEnemy = spawnRate.Value;
+            spawnEnemyKey = enemyTypeKey;
 
         }
-        return spawnEnemy;
+        return cachedEnemyPrefabs[spawnEnemyKey];
+
     }
 }
