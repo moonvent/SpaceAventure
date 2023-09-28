@@ -12,7 +12,7 @@ public static class SpawnListContants
                 (1f, EnemyLevelBehaviorConstant.EnemyType.First),
             }
         },
-        { LevelStages.Second, new List<(float, EnemyLevelBehaviorConstant.EnemyType)> 
+        { LevelStages.Second, new List<(float, EnemyLevelBehaviorConstant.EnemyType)>
             {
                 (.3f, EnemyLevelBehaviorConstant.EnemyType.First),
                 (.7f, EnemyLevelBehaviorConstant.EnemyType.Second)
@@ -25,9 +25,10 @@ public static class SpawnListContants
 // все фазы в первом уровне
 public enum LevelStages
 {
-    First = 30,
-    Second = 60,
-    Third = 90,
-    Four = 100,
+    First = 0,
+    Second = 30,
+    Third = 60,
+    Four = 90,
+    Fifth = 100,
 }
 

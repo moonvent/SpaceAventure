@@ -90,7 +90,6 @@ public class EnemyLevelBehavior : MonoBehaviour
             if (Enum.IsDefined(levelStagesType, score))
             {
                 currentStage = (LevelStages)score;
-                // ChangeEnemyStage();
             }
         }
     }
@@ -136,16 +135,13 @@ public class EnemyLevelBehavior : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        // This is an infinite loop, be careful with these!
         while (true)
         {
-            // This instantiates a new object at the position (0, 0, 0) with no rotation
             GameObject newEnemy = Instantiate(spawnList.GetEnemyForCurrentStage(currentStage),
                 CalculateSpawnPoint(),
                 Quaternion.identity);
             newEnemy.GetComponent<EnemyFirstType>().Init(mainLevel);
 
-            // This pauses the Coroutine for 1 second
             yield return new WaitForSeconds(1f);
         }
     }

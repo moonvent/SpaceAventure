@@ -43,20 +43,7 @@ public class SpawnList
 
     public GameObject GetEnemyForCurrentStage(LevelStages levelStage)
     {
-        // spawnRateWithEnemy = spawnRates[levelStage];
-        // nextSpawnRate = (float)randomizer.NextDouble();
-        //
-        // foreach (KeyValuePair<float, GameObject> spawnRate in spawnRateWithEnemy)
-        // {
-        //     if (spawnRate.Key > nextSpawnRate)
-        //     {
-        //         return spawnRate.Value;
-        //     }
-        //     spawnEnemy = spawnRate.Value;
-        //
-        // }
-        // return spawnEnemy;
-
+        // Debug.Log(levelStage);
         spawnRateWithEnemy = SpawnListContants.StageWithSpawnRate[levelStage];
         nextSpawnRate = (float)randomizer.NextDouble();
 
