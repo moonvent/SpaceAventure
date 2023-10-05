@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://d24gitwamwr7s"]
+
+[node name="Gun" type="Node2D"]
