@@ -1,17 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://4v8x5drffc58"]
+[gd_scene load_steps=5 format=3 uid="uid://v4cvq1dnccrv"]
 
+[ext_resource type="PackedScene" uid="uid://cjrtiwyjljgrm" path="res://scenes/level_1/projectile.tscn" id="1_8j4l0"]
 [ext_resource type="Script" path="res://scripts/level_1/bullet.gd" id="1_8k1kt"]
 [ext_resource type="Texture2D" uid="uid://ct4emskta0hl5" path="res://textures/level_1/bullet.png" id="1_rt1bb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_iaywy"]
-size = Vector2(8, 3)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ykmm"]
+size = Vector2(3.375, 8.88889)
 
-[node name="Bullet" type="Area2D"]
+[node name="Bullet" instance=ExtResource("1_8j4l0")]
 script = ExtResource("1_8k1kt")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" parent="." index="0"]
 rotation = 1.5708
 texture = ExtResource("1_rt1bb")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_iaywy")
+[node name="CollisionShape2D" parent="." index="1"]
+rotation = 1.5708
+scale = Vector2(0.9, 0.9)
+shape = SubResource("RectangleShape2D_2ykmm")
