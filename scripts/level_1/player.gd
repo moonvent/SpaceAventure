@@ -1,8 +1,7 @@
 extends SpaceShip
 
 
-const BulletScene: PackedScene = preload("res://scenes/level_1/bullet.tscn")
-@onready var shot_from_position_marker := $ShotMarker
+class_name Player
 
 
 var direction: Vector2          # direction of ship, or bullet
@@ -11,7 +10,12 @@ var new_bullet: Bullet
 
 
 func _ready():
-    SPEED = 500
+    GunScene = preload("res://scenes/level_1/player_gun.tscn")
+
+    SPEED = Config.PlayerConsts.SPEED
+    gun = GunScene.instantiate()
+    gun.init(self, $ShotMarker, %Projectiles)
+    add_child(gun)
 
 
 func _physics_process(_delta):
@@ -22,15 +26,6 @@ func _physics_process(_delta):
     moving(direction)
     
     if (Input.is_action_pressed("fire")):
-        fire()
-
-
-func fire():
-    global_mouse_pos = get_global_mouse_position()
-    direction = (global_mouse_pos - position).normalized()
-
-    new_bullet = BulletScene.instantiate()
-    new_bullet.init(direction, shot_from_position_marker.global_position)
-    %Projectiles.add_child(new_bullet)
-
+        gun.fire(get_global_mouse_position())
+        # print(%Projectiles)
 

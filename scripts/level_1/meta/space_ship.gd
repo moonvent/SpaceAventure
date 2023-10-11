@@ -4,8 +4,12 @@ extends CharacterBody2D
 class_name SpaceShip
 
 
-var SPEED := 0
-var HEALTH := 0
+var SPEED: int
+var HEALTH: int
+
+
+var gun: Gun
+var GunScene: PackedScene
 
 
 func _look_at_position(position_):
