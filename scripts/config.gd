@@ -2,5 +2,6 @@ extends Node
 
 
 class PlayerConsts:
-    const SPEED = 500
-    const BULLET_SPEED = 2_500
+    # describe constants available for player
+    const SPEED := 500
+    const BULLET_SPEED := 2_500

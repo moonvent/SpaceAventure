@@ -15,6 +15,10 @@ func init_without_params():
     pass
 
 
-func fire(shot_position):
-    pass
+func fire(shot_position: Vector2):
+    """
+        Describe how to fire
+        Args:
+            shot_position (Vector2): position which need to be selected for shooting
+    """
 

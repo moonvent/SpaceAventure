@@ -1,3 +1,9 @@
-[gd_scene format=3 uid="uid://c4inxm66joxme"]
+[gd_scene load_steps=2 format=3 uid="uid://c4inxm66joxme"]
+
+[ext_resource type="Script" path="res://scripts/level_1/spawner.gd" id="1_ggesh"]
 
 [node name="Spawner" type="Node2D"]
+script = ExtResource("1_ggesh")
+
+[node name="SpawnEnemyTimer" type="Timer" parent="."]
+autostart = true

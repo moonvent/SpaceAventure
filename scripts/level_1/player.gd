@@ -5,14 +5,14 @@ class_name Player
 
 
 var direction: Vector2          # direction of ship, or bullet
-var global_mouse_pos            # mouse pos on the card
+var global_mouse_pos             # mouse pos on the card
 var new_bullet: Bullet
 
 
 func _ready():
     GunScene = preload("res://scenes/level_1/player_gun.tscn")
 
-    SPEED = Config.PlayerConsts.SPEED
+    speed = Config.PlayerConsts.SPEED
     gun = GunScene.instantiate()
     gun.init(self, $ShotMarker, %Projectiles)
     add_child(gun)
@@ -27,5 +27,4 @@ func _physics_process(_delta):
     
     if (Input.is_action_pressed("fire")):
         gun.fire(get_global_mouse_position())
-        # print(%Projectiles)
 

@@ -4,8 +4,8 @@ extends CharacterBody2D
 class_name SpaceShip
 
 
-var SPEED: int
-var HEALTH: int
+var speed: int
+var health: int
 
 
 var gun: Gun
@@ -17,7 +17,7 @@ func _look_at_position(position_):
 
 
 func moving(direction):
-    velocity = direction * SPEED
+    velocity = direction * speed
 
     move_and_slide()
 
