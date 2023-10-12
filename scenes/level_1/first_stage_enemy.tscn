@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfths8hmeibrg"]
+
+[ext_resource type="PackedScene" uid="uid://cq3460s75xg1u" path="res://scenes/level_1/enemy.tscn" id="1_6ytt8"]
+[ext_resource type="Script" path="res://scripts/level_1/first_stage_enemy.gd" id="2_5phx1"]
+[ext_resource type="Texture2D" uid="uid://b1xouah1gwkgo" path="res://textures/level_1/first_stage_enemy.png" id="2_gc5le"]
+
+[node name="FirstStageEnemy" instance=ExtResource("1_6ytt8")]
+script = ExtResource("2_5phx1")
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 1.5708
+texture = ExtResource("2_gc5le")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+rotation = 1.5708
+polygon = PackedVector2Array(0, -19, -9, -2, -13, 3, -15, 3, -19, 11, -21, 18, -12, 10, -4, 7, 0, 6, 12, 10, 21, 18, 19, 10, 15, 3, 13, 3, 9, -2)
+
+[node name="ShotMarker" parent="." index="2"]
+position = Vector2(20, 0)

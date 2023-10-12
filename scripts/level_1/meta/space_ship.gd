@@ -4,26 +4,32 @@ extends CharacterBody2D
 class_name SpaceShip
 
 
-var speed: int
 var health: int
 
+var speed: int
+var direction: Vector2                    # direction of ship, or bullet
+var look_at_position_coords: Vector2
 
 var gun: Gun
 var GunScene: PackedScene
+
+
+func _setup_gun():
+    pass
 
 
 func _look_at_position(position_):
     look_at(position_)
 
 
-func moving(direction):
-    velocity = direction * speed
+func moving(move_direction):
+    velocity = move_direction * speed
 
     move_and_slide()
 
 
 func _ready():
-    pass
+    _setup_gun()
 
 
 func _physics_process(_delta):

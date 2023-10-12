@@ -1,9 +1,12 @@
 extends SpaceShip
 
 
+class_name Enemy
+
+
+var player: Player
+
+
 func _ready():
-    pass 
-
-
-func _process(_delta):
-    pass
+    super()
+    player = get_node("../../Player") as Player

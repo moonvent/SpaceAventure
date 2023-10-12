@@ -1,7 +1,15 @@
 extends Node
 
 
-class PlayerConsts:
+enum PlayerConsts {
     # describe constants available for player
-    const SPEED := 500
-    const BULLET_SPEED := 2_500
+
+    SPEED = 500,
+    BULLET_SPEED = 2_500
+}
+
+
+enum FirstStageEnemyConsts {
+     SPEED = 350
+}
+

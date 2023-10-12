@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://by7ppmjqns0in"]
+
+[ext_resource type="PackedScene" uid="uid://d24gitwamwr7s" path="res://scenes/level_1/gun.tscn" id="1_ebn7e"]
+[ext_resource type="Script" path="res://scripts/level_1/first_stage_enemy_gun.gd" id="2_r68pi"]
+
+[node name="FirstStageEnemyGun" instance=ExtResource("1_ebn7e")]
+script = ExtResource("2_r68pi")
