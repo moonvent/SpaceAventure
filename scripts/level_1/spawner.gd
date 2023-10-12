@@ -24,7 +24,7 @@ func _ready():
 
 
 func create_new_enemy():
-    stage_handler[first_level_handler.stage].call()
+    stage_handler[first_level_handler.current_stage].call()
 
 
 func create_first_stage_enemy():
