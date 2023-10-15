@@ -15,6 +15,9 @@ enum Stages {
 var score := 0 : set = _set_score
 var current_stage: int
 
+
+@onready var first_level_ui: FirstLevelUserInterface = %FirstLevelUI as FirstLevelUserInterface
+
 # here, will be score point for every stage
 var available_scores_for_new_stage: Array
 
@@ -32,4 +35,5 @@ func _set_score(new_score: int):
         current_stage = new_score
 
     score = new_score
+    first_level_ui.change_score(score)
 

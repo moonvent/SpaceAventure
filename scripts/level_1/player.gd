@@ -4,7 +4,7 @@ extends SpaceShip
 class_name Player
 
 
-@onready var first_level_ui: Control = %FirstLevelUI
+@onready var first_level_ui: FirstLevelUserInterface = %FirstLevelUI as FirstLevelUserInterface
 
 
 func _setup_gun():
@@ -36,5 +36,4 @@ func _physics_process(_delta):
 
 func decrease_health(decrease_amount: int):
     super(decrease_amount)
-    # print(first_level_ui)
     first_level_ui.change_hp_amount(health)

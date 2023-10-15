@@ -4,6 +4,9 @@ extends Enemy
 class_name FirstStageEnemy
 
 
+@onready var first_level_handler: FirstLevelHandler
+
+
 func _setup_gun():
     gun = GlobalResourceLoader.FirstStageEnemyGun.instantiate()
     add_child(gun)
@@ -13,6 +16,8 @@ func _setup_gun():
 func init_without_params():
     speed = Config.FirstStageEnemyConsts.SPEED
     health = Config.FirstStageEnemyConsts.HEALTH
+    prize_for_kill = Config.FirstStageEnemyConsts.PRIZE_FOR_KILL
+    first_level_handler = get_node("../../FirstLevelHandler")
 
 
 func _ready():
@@ -29,3 +34,10 @@ func _physics_process(_delta):
     if self.global_position.distance_to(player.global_position) > Config.FirstStageEnemyConsts.DISTANCE_BEFORE_PLAYER:
         moving(direction)
 
+
+func death():
+    super()
+    first_level_handler.score += prize_for_kill
+
+
+    

@@ -14,6 +14,7 @@ enum FirstStageEnemyConsts {
     DISTANCE_BEFORE_PLAYER = 200,
     BULLET_SPEED = 1_000,
     HEALTH = 20,
+    PRIZE_FOR_KILL = 1
 }
 
 

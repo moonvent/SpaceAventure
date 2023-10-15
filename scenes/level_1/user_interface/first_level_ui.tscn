@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c2qgqjwoslap0"]
+[gd_scene load_steps=5 format=3 uid="uid://c2qgqjwoslap0"]
 
 [ext_resource type="Texture2D" uid="uid://ce50v8fmg8n0w" path="res://textures/user_interface/heart.svg" id="1_57t5e"]
 [ext_resource type="Theme" uid="uid://by520rausdyrx" path="res://scenes/level_1/user_interface/themes/first_level_ui_font.tres" id="2_m5aos"]
 [ext_resource type="Script" path="res://scripts/level_1/user_interface.gd" id="3_mqyni"]
+[ext_resource type="Texture2D" uid="uid://d2pdqcsroqie2" path="res://textures/user_interface/coin.svg" id="4_mc0vq"]
 
 [node name="FirstLevelUI" type="Control"]
 layout_mode = 3
@@ -33,3 +34,25 @@ unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("2_m5aos")
 text = "100"
+
+[node name="BoxContainer2" type="BoxContainer" parent="CanvasLayer"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/BoxContainer2"]
+layout_mode = 2
+texture = ExtResource("4_mc0vq")
+expand_mode = 2
+
+[node name="Score" type="Label" parent="CanvasLayer/BoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_m5aos")
+text = "000"
