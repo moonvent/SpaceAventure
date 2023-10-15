@@ -10,6 +10,13 @@ var projectile_speed: int
 var shot_cooldown: int
 var direction: Vector2
 
+var shot_from_position_marker: Marker2D 
+var player: Player
+var projectiles: Node2D
+
+
+var new_bullet: Bullet
+
 
 func init_without_params():
     pass

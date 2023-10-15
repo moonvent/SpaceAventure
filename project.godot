@@ -53,6 +53,15 @@ fire={
 ]
 }
 
+[layer_names]
+
+2d_render/layer_1="SpaceShip"
+2d_render/layer_2="Projectiles"
+2d_physics/layer_1="SpaceShip"
+2d_physics/layer_2="Projectile"
+2d_physics/layer_3="Player"
+2d_physics/layer_4="FirstStageEnemy"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b1xouah1gwkgo" path="res://textures/level_1/first_stage_enemy.png" id="2_gc5le"]
 
 [node name="FirstStageEnemy" instance=ExtResource("1_6ytt8")]
+collision_layer = 8
 script = ExtResource("2_5phx1")
 
 [node name="Sprite2D" parent="." index="0"]

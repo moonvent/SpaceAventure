@@ -73,7 +73,6 @@ func create_fourth_stage_enemy():
 func get_spawn_coords():
     spawn_position = Vector2()
 
-    print(available_sides)
     spawn_side = available_sides[randi() % available_sides.size()]
     
     match spawn_side:

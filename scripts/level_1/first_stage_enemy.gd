@@ -12,6 +12,7 @@ func _setup_gun():
 
 func _ready():
     super()
+    player = get_node("../../Player") as Player
     speed = Config.FirstStageEnemyConsts.SPEED
 
 
@@ -21,4 +22,6 @@ func _physics_process(_delta):
     direction = (player.global_position - global_position).normalized()
 
     moving(direction)
+
+    gun.fire(player.position)
 

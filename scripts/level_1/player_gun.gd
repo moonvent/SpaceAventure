@@ -4,13 +4,6 @@ extends Gun
 class_name PlayerGun
 
 
-var new_bullet: Bullet
-
-var shot_from_position_marker: Marker2D 
-var player: Player
-var projectiles: Node
-
-
 func init_without_params():
     projectile_scene = GlobalResourceLoader.BulletScene
     projectile_speed = Config.PlayerConsts.BULLET_SPEED
