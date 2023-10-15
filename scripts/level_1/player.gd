@@ -10,9 +10,14 @@ func _setup_gun():
     gun.init_without_params()
 
 
+func init_without_params():
+    speed = Config.PlayerConsts.SPEED
+    health = Config.PlayerConsts.HEALTH
+
+
 func _ready():
     super()
-    speed = Config.PlayerConsts.SPEED
+    init_without_params()
 
 
 func _physics_process(_delta):

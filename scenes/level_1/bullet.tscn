@@ -8,6 +8,7 @@
 size = Vector2(3.375, 8.88889)
 
 [node name="Bullet" instance=ExtResource("1_8j4l0")]
+collision_mask = 12
 script = ExtResource("1_8k1kt")
 
 [node name="Sprite2D" parent="." index="0"]

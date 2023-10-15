@@ -10,10 +10,15 @@ func _setup_gun():
     gun.init_without_params()
 
 
+func init_without_params():
+    speed = Config.FirstStageEnemyConsts.SPEED
+    health = Config.FirstStageEnemyConsts.HEALTH
+
+
 func _ready():
     super()
     player = get_node("../../Player") as Player
-    speed = Config.FirstStageEnemyConsts.SPEED
+    init_without_params()
 
 
 func _physics_process(_delta):
@@ -21,7 +26,6 @@ func _physics_process(_delta):
 
     direction = (player.global_position - global_position).normalized()
 
-    moving(direction)
-
-    gun.fire(player.position)
+    if self.global_position.distance_to(player.global_position) > Config.FirstStageEnemyConsts.DISTANCE_BEFORE_PLAYER:
+        moving(direction)
 

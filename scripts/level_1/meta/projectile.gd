@@ -7,6 +7,7 @@ class_name Projectile
 var speed: int
 var direction: Vector2
 var timeout_dead := 2
+var damage: int
 
 
 func init_without_params():

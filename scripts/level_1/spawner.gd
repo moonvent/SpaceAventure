@@ -1,6 +1,8 @@
 extends Node2D
 
 
+class_name Spawner
+
 var window_size := DisplayServer.window_get_size()
 
 @onready var first_level_handler: FirstLevelHandler = %FirstLevelHandler
@@ -52,7 +54,6 @@ func create_new_enemy():
 
 
 func create_first_stage_enemy():
-    print("First enemy")
     enemy = GlobalResourceLoader.FirstStageEnemy.instantiate()
     enemy.position = spawn_position
     add_child(enemy)

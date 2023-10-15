@@ -4,9 +4,13 @@ extends EnemyGun
 class_name FirstStageEnemyGun
 
 
+@onready var shot_queue_activator: Timer = $ShotQueueActivator
+var reloaded_amount_of_charges := 3
+
+
 func init_without_params():
     projectile_scene = GlobalResourceLoader.BulletScene
-    projectile_speed = Config.PlayerConsts.BULLET_SPEED
+    projectile_speed = Config.FirstStageEnemyConsts.BULLET_SPEED
     shot_cooldown = 0
 
     player = get_node("../../../Player") as Player
@@ -23,3 +27,14 @@ func fire(shot_position: Vector2):
     projectiles.add_child(new_bullet)
 
 
+func _on_shot_cooldown_timeout():
+    shot_queue_activator.start()
+    reloaded_amount_of_charges = 3
+
+
+func _on_shot_queue_activator_timeout():
+    fire(player.position)
+    reloaded_amount_of_charges -= 1
+
+    if not reloaded_amount_of_charges:
+        shot_queue_activator.stop()

@@ -32,6 +32,12 @@ func _ready():
     _setup_gun()
 
 
-func _physics_process(_delta):
-    pass
+func decrease_health(decrease_amount: int):
+    health -= decrease_amount
 
+    if health <= 0:
+        death()
+        
+
+func death():
+    queue_free()
