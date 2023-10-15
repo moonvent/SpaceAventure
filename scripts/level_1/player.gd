@@ -4,6 +4,9 @@ extends SpaceShip
 class_name Player
 
 
+@onready var first_level_ui: Control = %FirstLevelUI
+
+
 func _setup_gun():
     gun = GlobalResourceLoader.PlayerGunScene.instantiate()
     add_child(gun)
@@ -30,3 +33,8 @@ func _physics_process(_delta):
     if (Input.is_action_pressed("fire")):
         gun.fire(look_at_position_coords)
 
+
+func decrease_health(decrease_amount: int):
+    super(decrease_amount)
+    # print(first_level_ui)
+    first_level_ui.change_hp_amount(health)

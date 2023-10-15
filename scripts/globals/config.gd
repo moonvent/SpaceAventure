@@ -19,6 +19,6 @@ enum FirstStageEnemyConsts {
 
 enum BulletConsts {
     DELETE_TIME = 2,
-    DAMAGE = 3
+    DAMAGE = 1
 }
 

@@ -1,13 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://sebyshuqf3h2"]
+[gd_scene load_steps=7 format=3 uid="uid://sebyshuqf3h2"]
 
 [ext_resource type="Script" path="res://scripts/level_1/level.gd" id="1_3t3se"]
 [ext_resource type="Texture2D" uid="uid://dk0837q15orhl" path="res://textures/level_1/background.jpg" id="2_1vh16"]
+[ext_resource type="PackedScene" uid="uid://c2qgqjwoslap0" path="res://scenes/level_1/user_interface/first_level_ui.tscn" id="2_fe11n"]
 [ext_resource type="PackedScene" uid="uid://c4inxm66joxme" path="res://scenes/level_1/spawner.tscn" id="2_jl3b3"]
 [ext_resource type="PackedScene" uid="uid://c1p70xx8qxjf6" path="res://scenes/level_1/player.tscn" id="3_7y0q3"]
 [ext_resource type="PackedScene" uid="uid://dys3ltrvmw4ec" path="res://scenes/level_1/first_level_handler.tscn" id="3_j4v00"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_3t3se")
+
+[node name="FirstLevelUI" parent="." instance=ExtResource("2_fe11n")]
+unique_name_in_owner = true
 
 [node name="Spawner" parent="." instance=ExtResource("2_jl3b3")]
 
