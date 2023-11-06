@@ -1,0 +1,55 @@
+[gd_scene load_steps=13 format=3 uid="uid://05bpslvp8p14"]
+
+[ext_resource type="PackedScene" uid="uid://8qud81cjyvgs" path="res://scenes/menu/meta_menu.tscn" id="1_xyl7v"]
+[ext_resource type="Texture2D" uid="uid://dxmw8iq38l2k" path="res://textures/user_interface/images/MainMenuBackground.png" id="2_1s8hd"]
+[ext_resource type="Script" path="res://scripts/user_interface/main_menu.gd" id="2_xvst0"]
+[ext_resource type="PackedScene" uid="uid://crqtvsewrdh7f" path="res://scenes/menu/menu_button.tscn" id="3_uoiyn"]
+[ext_resource type="Texture2D" uid="uid://blcs3hs7sbuem" path="res://textures/user_interface/images/play.png" id="5_y1g8t"]
+[ext_resource type="Texture2D" uid="uid://dy8bc4b0dqld8" path="res://textures/user_interface/images/options.png" id="6_hd8rh"]
+[ext_resource type="Texture2D" uid="uid://dhi61nw306usg" path="res://textures/user_interface/images/Key_P.png" id="6_mtcuh"]
+[ext_resource type="Texture2D" uid="uid://bwdh2nmekbhb7" path="res://textures/user_interface/images/credits.png" id="7_8vfjy"]
+[ext_resource type="Texture2D" uid="uid://ho5r0l7xjnim" path="res://textures/user_interface/images/Key_S.png" id="7_n8yr1"]
+[ext_resource type="Texture2D" uid="uid://chhtcelqh0ulg" path="res://textures/user_interface/images/QuitButton.png" id="8_xi4bf"]
+[ext_resource type="Texture2D" uid="uid://qprc8po56y6v" path="res://textures/user_interface/images/Key_C.png" id="10_ij6n0"]
+[ext_resource type="Texture2D" uid="uid://dqfkx5c2hikfc" path="res://textures/user_interface/images/Key_Q.png" id="12_rd6l0"]
+
+[node name="MainMenu" instance=ExtResource("1_xyl7v")]
+script = ExtResource("2_xvst0")
+
+[node name="Background" type="TextureRect" parent="." index="0"]
+layout_mode = 0
+offset_right = 1921.0
+offset_bottom = 1083.0
+texture = ExtResource("2_1s8hd")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." index="1"]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 10.0
+offset_right = 1600.0
+offset_bottom = 250.0
+pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
+theme_override_constants/separation = 300
+
+[node name="Play" parent="HBoxContainer" index="0" instance=ExtResource("3_uoiyn")]
+layout_mode = 2
+button_text = "Play"
+icon_texture = ExtResource("5_y1g8t")
+key_texture = ExtResource("6_mtcuh")
+
+[node name="Options" parent="HBoxContainer" index="1" instance=ExtResource("3_uoiyn")]
+layout_mode = 2
+icon_texture = ExtResource("6_hd8rh")
+key_texture = ExtResource("7_n8yr1")
+
+[node name="Credits" parent="HBoxContainer" index="2" instance=ExtResource("3_uoiyn")]
+layout_mode = 2
+button_text = "Credits"
+icon_texture = ExtResource("7_8vfjy")
+key_texture = ExtResource("10_ij6n0")
+
+[node name="Quit" parent="HBoxContainer" index="3" instance=ExtResource("3_uoiyn")]
+layout_mode = 2
+button_text = "Quit"
+icon_texture = ExtResource("8_xi4bf")
+key_texture = ExtResource("12_rd6l0")
