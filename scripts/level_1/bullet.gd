@@ -5,11 +5,11 @@ class_name Bullet
 
 
 func _ready():
-    damage = Config.BulletConsts.DAMAGE
+	damage = Config.BulletConsts.DAMAGE
 
 
 func _on_body_entered(body):
-    if body is SpaceShip:
-        body.decrease_health(damage)
+	if body is SpaceShip:
+		body.decrease_health(damage)
 
-    queue_free()
+	queue_free()

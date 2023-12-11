@@ -11,24 +11,24 @@ var damage: int
 
 
 func init_without_params():
-    pass
+	pass
 
 
 func init(projectile_direction: Vector2, shot_position: Vector2, projectile_speed: int):
-    init_without_params()
+	init_without_params()
 
-    direction = projectile_direction
-    position = shot_position
-    rotation = projectile_direction.angle()
-    speed = projectile_speed
+	direction = projectile_direction
+	position = shot_position
+	rotation = projectile_direction.angle()
+	speed = projectile_speed
 
-    $SelfDestructionTimer.timeout.connect(self_destruction_action)
+	$SelfDestructionTimer.timeout.connect(self_destruction_action)
 
 
 func _physics_process(delta):
-    position += direction * speed * delta
+	position += direction * speed * delta
 
 
 func self_destruction_action():
-    queue_free()
+	queue_free()
 

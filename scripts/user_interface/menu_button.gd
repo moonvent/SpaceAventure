@@ -10,7 +10,7 @@ extends Control
 
 
 func _ready():
-    text.text = button_text
-    icon.texture = icon_texture
-    key.texture = key_texture
+	text.text = button_text
+	icon.texture = icon_texture
+	key.texture = key_texture
 

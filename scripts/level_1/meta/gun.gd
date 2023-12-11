@@ -19,13 +19,13 @@ var new_bullet: Bullet
 
 
 func init_without_params():
-    pass
+	pass
 
 
 func fire(shot_position: Vector2):
-    """
-        Describe how to fire
-        Args:
-            shot_position (Vector2): position which need to be selected for shooting
-    """
+	"""
+		Describe how to fire
+		Args:
+			shot_position (Vector2): position which need to be selected for shooting
+	"""
 

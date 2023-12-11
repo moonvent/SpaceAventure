@@ -15,29 +15,29 @@ var GunScene: PackedScene
 
 
 func _setup_gun():
-    pass
+	pass
 
 
 func _look_at_position(position_):
-    look_at(position_)
+	look_at(position_)
 
 
 func moving(move_direction):
-    velocity = move_direction * speed
+	velocity = move_direction * speed
 
-    move_and_slide()
+	move_and_slide()
 
 
 func _ready():
-    _setup_gun()
+	_setup_gun()
 
 
 func decrease_health(decrease_amount: int):
-    health -= decrease_amount
+	health -= decrease_amount
 
-    if health <= 0:
-        death()
-        
+	if health <= 0:
+		death()
+		
 
 func death():
-    queue_free()
+	queue_free()

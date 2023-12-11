@@ -10,4 +10,4 @@ var prize_for_kill: int
 
 
 func _ready():
-    super()
+	super()
