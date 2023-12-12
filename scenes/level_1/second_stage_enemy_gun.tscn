@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlgfyj22aty61"]
+
+[ext_resource type="PackedScene" uid="uid://dq1pq4fo7xwnw" path="res://scenes/level_1/first_stage_enemy_gun.tscn" id="1_um1kk"]
+
+[node name="FirstStageEnemyGun" instance=ExtResource("1_um1kk")]

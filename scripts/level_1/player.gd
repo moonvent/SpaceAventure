@@ -7,15 +7,12 @@ class_name Player
 @onready var first_level_ui: FirstLevelUserInterface = %FirstLevelUI as FirstLevelUserInterface
 
 
-func _setup_gun():
-	gun = GlobalResourceLoader.PlayerGunScene.instantiate()
-	add_child(gun)
-	gun.init_without_params()
-
-
 func init_without_params():
 	speed = Config.PlayerConsts.SPEED
 	health = Config.PlayerConsts.HEALTH
+	gun = GlobalResourceLoader.PlayerGunScene.instantiate()
+	add_child(gun)
+	gun.init_without_params()
 
 
 func _ready():

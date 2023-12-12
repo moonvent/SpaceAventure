@@ -7,7 +7,6 @@ class_name Gun
 # scene of the projectyle, can be a bullet, and others
 var projectile_scene: PackedScene
 var projectile_speed: int
-var shot_cooldown: int
 var direction: Vector2
 
 var shot_from_position_marker: Marker2D 

@@ -11,15 +11,13 @@ script = ExtResource("1_0hok4")
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = 1.5708
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_o753w")
 
 [node name="CollisionPolygon2D" parent="." index="1"]
 rotation = 1.5708
+scale = Vector2(1.5, 1.5)
 polygon = PackedVector2Array(-0.0001448, -40, -25.9999, 18.0001, 0.00015204, 42, 26.0001, 18.9999)
 
 [node name="ShotMarker" parent="." index="2"]
-position = Vector2(74, 0)
-
-[node name="Camera2D" type="Camera2D" parent="." index="3"]
-zoom = Vector2(0.5, 0.5)
-position_smoothing_speed = 1.0
+position = Vector2(87, 0)

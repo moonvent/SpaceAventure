@@ -14,10 +14,6 @@ var gun: Gun
 var GunScene: PackedScene
 
 
-func _setup_gun():
-	pass
-
-
 func _look_at_position(position_):
 	look_at(position_)
 
@@ -29,7 +25,7 @@ func moving(move_direction):
 
 
 func _ready():
-	_setup_gun()
+	pass
 
 
 func decrease_health(decrease_amount: int):

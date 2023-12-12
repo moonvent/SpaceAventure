@@ -49,9 +49,9 @@ func init():
 		available_sides.append(SpawnSide[side])
 
 	player = get_node("../Player")
-	var camera_zoom_multiplier = get_node("../Player/Camera2D").zoom[0]
-	window_size_half_for_spawn_enemies = window_size * (1 + camera_zoom_multiplier) / 2
-	range_between_border_and_invisible_spawn_point = Config.RANGE_BETWEEN_CAMERA_BORDER_AND_SPAWN_POINT * pow(camera_zoom_multiplier, -1) * 2
+	#var camera_zoom_multiplier = get_node("../Player/Camera2D").zoom[0]
+	window_size_half_for_spawn_enemies = window_size / 2
+	range_between_border_and_invisible_spawn_point = Config.RANGE_BETWEEN_CAMERA_BORDER_AND_SPAWN_POINT
 
 
 func _ready():
@@ -71,7 +71,9 @@ func create_first_stage_enemy():
 
 
 func create_second_stage_enemy():
-	print("Second enemy")
+	enemy = GlobalResourceLoader.SecondStageEnemy.instantiate()
+	enemy.position = spawn_position
+	add_child(enemy)
 
 
 func create_third_stage_enemy():

@@ -7,7 +7,6 @@ class_name PlayerGun
 func init_without_params():
 	projectile_scene = GlobalResourceLoader.BulletScene
 	projectile_speed = Config.PlayerConsts.BULLET_SPEED
-	shot_cooldown = 0
 
 	player = get_node("..") as Player
 	shot_from_position_marker = get_node("../ShotMarker")
