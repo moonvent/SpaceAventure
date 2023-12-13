@@ -15,7 +15,8 @@ enum FirstStageEnemyConsts {
 	BULLET_SPEED = 2_000,
 	HEALTH = 5,
 	PRIZE_FOR_KILL = 1,
-	BULLET_CLIP = 3
+	BULLET_CLIP = 3,
+	MAX_DISTANCE_FOR_MIN_REWARD = 600
 }
 
 
@@ -27,6 +28,17 @@ enum SecondStageEnemyConsts {
 	PRIZE_FOR_KILL = 3,
 	BULLET_CLIP = 5
 }
+
+
+enum ThirdStageEnemyConsts {
+	SPEED = 1000,
+	DISTANCE_BEFORE_PLAYER = 300,
+	BULLET_SPEED = 3_000,
+	HEALTH = 15,
+	PRIZE_FOR_KILL = 20,
+	BULLET_CLIP = 10
+}
+
 
 
 enum BulletConsts {

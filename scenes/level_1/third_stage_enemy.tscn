@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://d002qhv2007yt"]
+
+[ext_resource type="PackedScene" uid="uid://buixwuhfnjw8m" path="res://scenes/level_1/second_stage_enemy.tscn" id="1_oxwjo"]
+[ext_resource type="Texture2D" uid="uid://c2gdmnrlsu6mm" path="res://textures/level_1/third_stage_enemy.png" id="2_c15aw"]
+
+[node name="ThirdStageEnemy" instance=ExtResource("1_oxwjo")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_c15aw")

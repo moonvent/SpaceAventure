@@ -10,3 +10,6 @@ const FirstStageEnemyGun: PackedScene = preload("res://scenes/level_1/first_stag
 
 const SecondStageEnemy: PackedScene = preload("res://scenes/level_1/second_stage_enemy.tscn")
 const SecondStageEnemyGun: PackedScene = preload("res://scenes/level_1/second_stage_enemy_gun.tscn")
+
+const ThirdStageEnemy: PackedScene = preload("res://scenes/level_1/third_stage_enemy.tscn")
+const ThirdStageEnemyGun: PackedScene = preload("res://scenes/level_1/third_stage_enemy_gun.tscn")

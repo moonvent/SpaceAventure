@@ -84,7 +84,9 @@ func create_second_stage_enemy():
 
 
 func create_third_stage_enemy():
-	print("Third enemy")
+	enemy = GlobalResourceLoader.ThirdStageEnemy.instantiate()
+	enemy.position = spawn_position
+	add_child(enemy)
 
 
 func create_fourth_stage_enemy():
@@ -112,5 +114,3 @@ func get_spawn_coords():
 		SpawnSide.RIGHT:  
 			spawn_position.x = right_bottom_point_of_camera_view.x + range_between_border_and_invisible_spawn_point
 			spawn_position.y = random_y_pos
-
-	print(spawn_position)

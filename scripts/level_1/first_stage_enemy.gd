@@ -12,3 +12,6 @@ func init_without_params():
 	super()
 
 
+
+func calculate_enemy_reward(max_prize_for_kill):
+	return max_prize_for_kill

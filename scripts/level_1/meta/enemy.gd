@@ -11,6 +11,10 @@ var player: Player
 var prize_for_kill: int
 
 
+var min_distance_for_max_reward := Config.FirstStageEnemyConsts.DISTANCE_BEFORE_PLAYER
+var max_distance_for_min_reward := Config.FirstStageEnemyConsts.MAX_DISTANCE_FOR_MIN_REWARD
+
+
 func init_without_params():
 	first_level_handler = get_node("../../FirstLevelHandler")
 	add_child(gun)
@@ -32,7 +36,21 @@ func _physics_process(_delta):
 
 
 func death():
+	first_level_handler.score += calculate_enemy_reward(prize_for_kill)
 	super()
-	print(self.global_position.distance_to(player.global_position))
-	first_level_handler.score += prize_for_kill
+
+
+func calculate_enemy_reward(max_prize_for_kill):
+	"""
+	This function need to calculate reward
+	"""
+	var died_place_distance := global_position.distance_to(player.global_position)
+	var part_for_every_point: float = (max_distance_for_min_reward - min_distance_for_max_reward) / max_prize_for_kill
+	var distance_for_prize_point := part_for_every_point
+	
+	while max_prize_for_kill >= 1 and died_place_distance > distance_for_prize_point:
+		max_prize_for_kill -= 1
+		distance_for_prize_point += part_for_every_point
+	
+	return max_prize_for_kill
 
