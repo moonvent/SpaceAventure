@@ -34,3 +34,6 @@ texture = ExtResource("2_1vh16")
 
 [node name="Projectiles" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(960, 540)

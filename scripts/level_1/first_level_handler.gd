@@ -21,6 +21,9 @@ var current_stage: int
 # here, will be score point for every stage
 var available_scores_for_new_stage: Array
 
+const MULTIPLIER := 5  # a number which need for rounding a current score
+var new_rounded_score := 0 # a number which represent status of score in level, do we need change stage or not
+
 
 func _ready():
 	available_scores_for_new_stage = []
@@ -31,8 +34,9 @@ func _ready():
 
 func _set_score(new_score: int):
 
-	if available_scores_for_new_stage.has(new_score):
-		current_stage = new_score
+	new_rounded_score = floor(new_score / MULTIPLIER) * MULTIPLIER
+	if available_scores_for_new_stage.has(new_rounded_score):
+		current_stage = new_rounded_score
 
 	score = new_score
 	first_level_ui.change_score(score)

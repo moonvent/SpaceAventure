@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/level_1/second_stage_enemy.gd" id="2_vxirl"]
 
 [node name="SecondStageEnemy" instance=ExtResource("1_60s80")]
-collision_layer = 9
+collision_layer = 8
 script = ExtResource("2_vxirl")
 
 [node name="Sprite2D" parent="." index="0"]

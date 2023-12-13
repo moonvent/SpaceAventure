@@ -28,9 +28,9 @@ var spawn_side: int
 var enemy: Enemy
 
 var player: Player
-var player_current_half_position: Vector2
-var current_border_size: Vector2
 var range_between_border_and_invisible_spawn_point: int
+var left_top_point_of_camera_view: Vector2
+var right_bottom_point_of_camera_view: Vector2
 
 
 func init():
@@ -49,10 +49,17 @@ func init():
 		available_sides.append(SpawnSide[side])
 
 	player = get_node("../Player")
-	#var camera_zoom_multiplier = get_node("../Player/Camera2D").zoom[0]
-	window_size_half_for_spawn_enemies = window_size / 2
-	range_between_border_and_invisible_spawn_point = Config.RANGE_BETWEEN_CAMERA_BORDER_AND_SPAWN_POINT
+	get_start_and_end_of_camera()
 
+
+func get_start_and_end_of_camera():
+	var camera = get_viewport().get_camera_2d()
+	var primary_size = camera.get_viewport().size
+	var zoom = camera.zoom[0]
+	var custom_size = primary_size * pow(zoom, -1)
+	left_top_point_of_camera_view = Vector2(primary_size) - custom_size
+	right_bottom_point_of_camera_view = custom_size
+	
 
 func _ready():
 	randomize()
@@ -89,20 +96,21 @@ func get_spawn_coords():
 
 	spawn_side = available_sides[randi() % available_sides.size()]
 
-	current_border_size = window_size_half_for_spawn_enemies
-	player_current_half_position = player.position
+	var random_x_pos = randi_range(left_top_point_of_camera_view.x, right_bottom_point_of_camera_view.x)	
+	var random_y_pos = randi_range(left_top_point_of_camera_view.y, right_bottom_point_of_camera_view.y)	
 
 	match spawn_side:
 		SpawnSide.UP:
-			spawn_position.x = player_current_half_position.x - window_size_half_for_spawn_enemies.x + int(randf() * current_border_size.x)
-			spawn_position.y = player_current_half_position.y - window_size_half_for_spawn_enemies.y - range_between_border_and_invisible_spawn_point
+			spawn_position.x = random_x_pos
+			spawn_position.y = left_top_point_of_camera_view.y - range_between_border_and_invisible_spawn_point
 		SpawnSide.DOWN:  
-			spawn_position.x = player_current_half_position.x - window_size_half_for_spawn_enemies.x + int(randf() * current_border_size.x)
-			spawn_position.y = player_current_half_position.y + window_size_half_for_spawn_enemies.y  + range_between_border_and_invisible_spawn_point
+			spawn_position.x = random_x_pos
+			spawn_position.y = right_bottom_point_of_camera_view.y + range_between_border_and_invisible_spawn_point
 		SpawnSide.LEFT:  
-			spawn_position.x = player_current_half_position.x - window_size_half_for_spawn_enemies.x - range_between_border_and_invisible_spawn_point
-			spawn_position.y = player_current_half_position.y - window_size_half_for_spawn_enemies.y + int(randf() * current_border_size.y)
+			spawn_position.x = left_top_point_of_camera_view.x - range_between_border_and_invisible_spawn_point
+			spawn_position.y = random_y_pos
 		SpawnSide.RIGHT:  
-			spawn_position.x = player_current_half_position.x + window_size_half_for_spawn_enemies.x + range_between_border_and_invisible_spawn_point
-			spawn_position.y = player_current_half_position.y - window_size_half_for_spawn_enemies.y + int(randf() * current_border_size.y)
+			spawn_position.x = right_bottom_point_of_camera_view.x + range_between_border_and_invisible_spawn_point
+			spawn_position.y = random_y_pos
 
+	print(spawn_position)

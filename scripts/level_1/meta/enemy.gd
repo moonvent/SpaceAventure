@@ -33,5 +33,6 @@ func _physics_process(_delta):
 
 func death():
 	super()
+	print(self.global_position.distance_to(player.global_position))
 	first_level_handler.score += prize_for_kill
 
