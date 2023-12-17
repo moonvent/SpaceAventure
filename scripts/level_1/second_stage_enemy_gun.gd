@@ -1,4 +1,4 @@
-extends FirstStageEnemyGun
+extends EnemyGun
 
 
 class_name SecondStageEnemyGun

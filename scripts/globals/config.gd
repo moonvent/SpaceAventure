@@ -40,6 +40,16 @@ enum ThirdStageEnemyConsts {
 }
 
 
+enum FourthStageEnemyConsts {
+	SPEED = 700,
+	DISTANCE_BEFORE_PLAYER = 100,
+	BULLET_SPEED = 2_500,
+	HEALTH = 200,
+	PRIZE_FOR_KILL = 50,
+	BULLET_CLIP = 1,
+	BULLET_DAMAGE = 5
+}
+
 
 enum BulletConsts {
 	DELETE_TIME = 2,

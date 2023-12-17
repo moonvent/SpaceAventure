@@ -72,9 +72,10 @@ func create_new_enemy():
 
 
 func create_first_stage_enemy():
-	enemy = GlobalResourceLoader.FirstStageEnemy.instantiate()
-	enemy.position = spawn_position
-	add_child(enemy)
+	create_fourth_stage_enemy()
+	# enemy = GlobalResourceLoader.FirstStageEnemy.instantiate()
+	# enemy.position = spawn_position
+	# add_child(enemy)
 
 
 func create_second_stage_enemy():
@@ -90,7 +91,10 @@ func create_third_stage_enemy():
 
 
 func create_fourth_stage_enemy():
-	print("Fourth enemy")
+	enemy = GlobalResourceLoader.FourthStageEnemy.instantiate()
+	enemy.position = spawn_position
+	add_child(enemy)
+	$SpawnEnemyTimer.stop()
 
 
 func get_spawn_coords():
