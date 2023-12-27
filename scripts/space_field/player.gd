@@ -10,6 +10,9 @@ class_name Player
 func _init():
 	speed = Constant.PlayerPrimaryStats.Speed
 	health = Constant.PlayerPrimaryStats.Health
+	gun = PlayerGun.new()
+	gun.init(self)
+	add_child(gun)
 
 
 func _physics_process(_delta):
@@ -20,8 +23,8 @@ func _physics_process(_delta):
 	direction = Input.get_vector(Constant.Action.Left, Constant.Action.Right, Constant.Action.Up, Constant.Action.Down)
 	moving(direction)
 	
-	# if (Input.is_action_pressed(Constant.Action.Fire)):
-	# 	gun.fire(look_at_position_coords)
+	if (Input.is_action_pressed(Constant.Action.Fire)):
+		gun.fire(look_at_position_coords)
 	
 	if (Input.is_action_pressed(Constant.Action.Pause)):
 		get_tree().paused = true

@@ -9,14 +9,18 @@ var direction: Vector2
 var damage: int
 
 
-func _init(projectile_direction: Vector2, shot_position: Vector2, projectile_speed: int):
+func init(projectile_direction: Vector2, shot_position: Vector2):
 
 	direction = projectile_direction
 	position = shot_position
 	rotation = projectile_direction.angle()
-	speed = projectile_speed
 
-	$SelfDestructionTimer.timeout.connect(self_destruction_action)
+	# print(get_node("Sprite2D"))
+	# $SelfDestructionTimer.timeout.connect(self_destruction_action)
+
+
+func _ready():
+	pass
 
 
 func _physics_process(delta):

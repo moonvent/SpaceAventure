@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Startup="*res://scripts/global/startup.gd"
 Constant="*res://scripts/global/constant.gd"
+SceneLoader="*res://scripts/global/scene_loader.gd"
 
 [display]
 

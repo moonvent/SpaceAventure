@@ -5,7 +5,9 @@ class_name Bullet
 
 
 func _init():
-	damage = Config.BulletConsts.DAMAGE
+	# damage = Config.BulletConsts.DAMAGE
+	damage = Constant.GunPrimaryStats.BulletDamage
+	speed = Constant.GunPrimaryStats.BulletSpeed
 
 
 func _on_body_entered(body):

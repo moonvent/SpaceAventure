@@ -12,6 +12,3 @@ texture = ExtResource("2_oleth")
 [node name="CollisionPolygon2D" parent="." index="1"]
 rotation = 1.5708
 polygon = PackedVector2Array(0, -40, -26, 19, 0, 41, 26, 19)
-
-[node name="Marker2D" parent="." index="2"]
-position = Vector2(54, 0)

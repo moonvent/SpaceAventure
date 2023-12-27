@@ -4,11 +4,12 @@ extends CharacterBody2D
 class_name SpaceShip
 
 
-var health: int
+var health: int                             # ship health
+var speed: int								# speed of ship
+var direction: Vector2						# direction of ship, or bullet
+var look_at_position_coords: Vector2        # where is looking ship
 
-var speed: int
-var direction: Vector2                    # direction of ship, or bullet
-var look_at_position_coords: Vector2
+var gun: Gun							    # ship gun
 
 
 func _look_at_position(position_):
