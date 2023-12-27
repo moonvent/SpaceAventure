@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cbbwnx3w8wamq"]
+
+[node name="SpaceShip" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="."]

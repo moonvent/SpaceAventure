@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://cedixv28iyhnb"]
+
+[ext_resource type="PackedScene" uid="uid://cbbwnx3w8wamq" path="res://scenes/space_field/space_ship.tscn" id="1_lga7m"]
+[ext_resource type="Texture2D" uid="uid://btpg3aonf28sy" path="res://assets/space_field/player.png" id="2_1ksgy"]
+[ext_resource type="Script" path="res://scripts/space_field/player.gd" id="2_7m0mv"]
+
+[node name="Player" instance=ExtResource("1_lga7m")]
+script = ExtResource("2_7m0mv")
+
+[node name="Sprite2D" parent="." index="0"]
+rotation = 1.5708
+texture = ExtResource("2_1ksgy")
+
+[node name="CollisionPolygon2D" parent="." index="1"]
+rotation = 1.5708
+polygon = PackedVector2Array(-0.00014842, -41, -25.9999, 19.0001, 0, 42, 26.0001, 18.9999)
+
+[node name="Marker2D" parent="." index="2"]
+position = Vector2(54, 0)
+rotation = 1.5708
