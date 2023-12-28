@@ -8,6 +8,7 @@
 size = Vector2(4, 8)
 
 [node name="Bullet" instance=ExtResource("1_i4mcv")]
+collision_mask = 13
 script = ExtResource("2_wvd68")
 
 [node name="Sprite2D" parent="." index="0"]
@@ -18,3 +19,5 @@ texture = ExtResource("2_lah33")
 [node name="CollisionShape2D" parent="." index="1"]
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_ltvoc")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

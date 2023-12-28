@@ -60,6 +60,13 @@ Pause={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="SpaceShip"
+2d_physics/layer_2="Bullet"
+2d_physics/layer_3="Enemy"
+2d_physics/layer_4="Player"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

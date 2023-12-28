@@ -15,3 +15,4 @@ func _on_body_entered(body):
 		body.decrease_health(damage)
 
 	queue_free()
+

@@ -30,5 +30,6 @@ func _set_score(new_score: int):
 		current_stage = new_rounded_score
 
 	score = new_score
+	print(score)
 	# first_level_ui.change_score(score)
 
