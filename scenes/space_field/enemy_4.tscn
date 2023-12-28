@@ -7,11 +7,16 @@
 
 [node name="Sprite2D" parent="." index="0"]
 rotation = 1.5708
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_mvjnj")
 
 [node name="CollisionPolygon2D" parent="." index="1"]
 rotation = 1.5708
+scale = Vector2(0.25, 0.25)
 polygon = PackedVector2Array(-75, -209, 1, -38, 73, -209, 204, 95, 72, 210, 0, 145, -75, 210, -205, 93)
 
+[node name="ShotMarker" parent="." index="2"]
+position = Vector2(75, 18)
+
 [node name="Marker2D2" type="Marker2D" parent="." index="3"]
-position = Vector2(274, -74)
+position = Vector2(75, -19)
