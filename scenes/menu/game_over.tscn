@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr0kql0qcochv"]
+
+[ext_resource type="Texture2D" uid="uid://dn8wmwbmg0iuu" path="res://textures/user_interface/images/game_over.png" id="1_l4wfn"]
+[ext_resource type="Theme" uid="uid://by520rausdyrx" path="res://scenes/level_1/user_interface/themes/first_level_ui_font.tres" id="2_b5tfa"]
+
+[node name="GameOver" type="CanvasLayer"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(959, 540)
+texture = ExtResource("1_l4wfn")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1079.0
+
+[node name="Label" type="Label" parent="Control/CenterContainer"]
+layout_mode = 2
+theme = ExtResource("2_b5tfa")
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 40
+text = "tr(\"Game Over\")"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/CenterContainer"]
+layout_mode = 2

@@ -13,5 +13,9 @@ func init_without_params():
 
 
 func decrease_health(decrease_amount: int):
-	super(decrease_amount)		
+	super(decrease_amount)
+
+
+func death():
+	super()
 

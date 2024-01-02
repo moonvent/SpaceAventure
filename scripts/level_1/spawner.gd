@@ -71,29 +71,27 @@ func create_new_enemy():
 	stage_handler[first_level_handler.current_stage].call()
 
 
+func spawn_enemy(enemy_scene: PackedScene):
+	enemy = enemy_scene.instantiate()
+	enemy.position = spawn_position
+	add_child(enemy)
+
+
 func create_first_stage_enemy():
 	create_fourth_stage_enemy()
-	# enemy = GlobalResourceLoader.FirstStageEnemy.instantiate()
-	# enemy.position = spawn_position
-	# add_child(enemy)
+	# spawn_enemy(GlobalResourceLoader.FirstStageEnemy)
 
 
 func create_second_stage_enemy():
-	enemy = GlobalResourceLoader.SecondStageEnemy.instantiate()
-	enemy.position = spawn_position
-	add_child(enemy)
+	spawn_enemy(GlobalResourceLoader.SecondStageEnemy)
 
 
 func create_third_stage_enemy():
-	enemy = GlobalResourceLoader.ThirdStageEnemy.instantiate()
-	enemy.position = spawn_position
-	add_child(enemy)
+	spawn_enemy(GlobalResourceLoader.ThirdStageEnemy)
 
 
 func create_fourth_stage_enemy():
-	enemy = GlobalResourceLoader.FourthStageEnemy.instantiate()
-	enemy.position = spawn_position
-	add_child(enemy)
+	spawn_enemy(GlobalResourceLoader.FourthStageEnemy)
 	$SpawnEnemyTimer.stop()
 
 
