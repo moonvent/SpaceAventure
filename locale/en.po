@@ -12,14 +12,21 @@ msgstr ""
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 # Example of a regular string.
-msgid "Hello world!"
-msgstr "Hello world!"
-
-msgid "Game Over"
+msgid "game_over"
 msgstr "Game Over"
 
-msgid "asb"
-msgstr "asb"
+msgid "earned_score"
+msgstr "Earned Score:"
+
+msgid "again"
+msgstr "Again"
+
+msgid "hub"
+msgstr "Hub"
+
+msgid "quit"
+msgstr "Quit"
+
 
 # Example of a string with pluralization.
 msgid "There is %d apple."

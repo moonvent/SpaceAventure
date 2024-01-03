@@ -16,3 +16,6 @@ const ThirdStageEnemyGun: PackedScene = preload("res://scenes/level_1/third_stag
 
 const FourthStageEnemy: PackedScene = preload("res://scenes/level_1/fourth_stage_enemy.tscn")
 const FourthStageEnemyGun: PackedScene = preload("res://scenes/level_1/fourth_stage_enemy_gun.tscn")
+
+
+const GameOverScene: PackedScene = preload("res://scenes/menu/game_over.tscn")
