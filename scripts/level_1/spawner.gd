@@ -7,15 +7,7 @@ var window_size := DisplayServer.window_get_size()
 var window_size_half_for_spawn_enemies: Vector2
 
 @onready var first_level_handler: FirstLevelHandler = %FirstLevelHandler
-@onready var Stages := FirstLevelHandler.Stages
 
-
-enum SpawnSide {
-	UP,
-	RIGHT,
-	DOWN,
-	LEFT
-}
 
 var available_sides: Array
 
@@ -37,16 +29,16 @@ func init():
 	$SpawnEnemyTimer.timeout.connect(create_new_enemy)
 
 	stage_handler = {
-		Stages.FIRST: create_first_stage_enemy,
-		Stages.SECOND: create_second_stage_enemy,
-		Stages.THIRD: create_third_stage_enemy,
-		Stages.FOURTH: create_fourth_stage_enemy,
+		Config.Stages.FIRST: create_first_stage_enemy,
+		Config.Stages.SECOND: create_second_stage_enemy,
+		Config.Stages.THIRD: create_third_stage_enemy,
+		Config.Stages.FOURTH: create_fourth_stage_enemy,
 	}
 
 	available_sides = Array()
 
-	for side in SpawnSide:
-		available_sides.append(SpawnSide[side])
+	for side in Config.SpawnSide:
+		available_sides.append(Config.SpawnSide[side])
 
 	player = get_node("../Player")
 	get_start_and_end_of_camera()
@@ -104,15 +96,15 @@ func get_spawn_coords():
 	var random_y_pos = randi_range(left_top_point_of_camera_view.y, right_bottom_point_of_camera_view.y)	
 
 	match spawn_side:
-		SpawnSide.UP:
+		Config.SpawnSide.UP:
 			spawn_position.x = random_x_pos
 			spawn_position.y = left_top_point_of_camera_view.y - range_between_border_and_invisible_spawn_point
-		SpawnSide.DOWN:  
+		Config.SpawnSide.DOWN:  
 			spawn_position.x = random_x_pos
 			spawn_position.y = right_bottom_point_of_camera_view.y + range_between_border_and_invisible_spawn_point
-		SpawnSide.LEFT:  
+		Config.SpawnSide.LEFT:  
 			spawn_position.x = left_top_point_of_camera_view.x - range_between_border_and_invisible_spawn_point
 			spawn_position.y = random_y_pos
-		SpawnSide.RIGHT:  
+		Config.SpawnSide.RIGHT:  
 			spawn_position.x = right_bottom_point_of_camera_view.x + range_between_border_and_invisible_spawn_point
 			spawn_position.y = random_y_pos

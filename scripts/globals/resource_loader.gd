@@ -18,4 +18,10 @@ const FourthStageEnemy: PackedScene = preload("res://scenes/level_1/fourth_stage
 const FourthStageEnemyGun: PackedScene = preload("res://scenes/level_1/fourth_stage_enemy_gun.tscn")
 
 
+const HubScene: PackedScene = preload("res://scenes/menu/hub.tscn")
+const FirstLevelScene: PackedScene = preload("res://scenes/level_1/level.tscn")
 const GameOverScene: PackedScene = preload("res://scenes/menu/game_over.tscn")
+
+
+func change_scene(new_scene: PackedScene):
+	get_tree().change_scene_to_packed(new_scene)

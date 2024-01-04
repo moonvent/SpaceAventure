@@ -27,6 +27,27 @@ msgstr "Лобби"
 msgid "quit"
 msgstr "Quit"
 
+msgid "save_and_quit"
+msgstr "Сохранить и выйти"
+
+msgid "pause"
+msgstr "Пауза"
+
+msgid "resume"
+msgstr "Продолжить"
+
+msgid "settings"
+msgstr "Настройки"
+
+msgid "hub"
+msgstr "Лобби"
+
+msgid "start_game"
+msgstr "Новая игра"
+
+msgid "continue_game"
+msgstr "Продолжить"
+
 # Example of a string with pluralization.
 msgid "There is %d apple."
 msgid_plural "There are %d apples."

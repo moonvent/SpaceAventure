@@ -18,4 +18,6 @@ func decrease_health(decrease_amount: int):
 
 func death():
 	super()
+	GlobalResourceLoader.change_scene(GlobalResourceLoader.GameOverScene)
+
 

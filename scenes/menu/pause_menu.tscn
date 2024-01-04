@@ -1,5 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://blcu7c0vce5pb"]
+[gd_scene load_steps=6 format=3 uid="uid://blcu7c0vce5pb"]
 
-[ext_resource type="PackedScene" uid="uid://8qud81cjyvgs" path="res://scenes/menu/meta_menu.tscn" id="1_mxg7v"]
+[ext_resource type="Script" path="res://scripts/user_interface/pause_menu.gd" id="1_wo2be"]
+[ext_resource type="Theme" uid="uid://by520rausdyrx" path="res://scenes/level_1/user_interface/themes/first_level_ui_font.tres" id="1_wv5ql"]
+[ext_resource type="Script" path="res://scripts/user_interface/pause_menu_container.gd" id="2_l534n"]
+[ext_resource type="PackedScene" uid="uid://dic2ecj5tfn8x" path="res://scenes/menu/buttons/quit_and_save_button.tscn" id="4_ebfl3"]
+[ext_resource type="PackedScene" uid="uid://dgde2a7i2w7hk" path="res://scenes/menu/buttons/settings_button.tscn" id="4_srswj"]
 
-[node name="PauseMenu" instance=ExtResource("1_mxg7v")]
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_wo2be")
+
+[node name="Control" type="Control" parent="."]
+top_level = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.588235)
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 0
+offset_right = 1919.0
+offset_bottom = 1079.0
+script = ExtResource("2_l534n")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+
+[node name="PauseLabel" type="Label" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_wv5ql")
+theme_override_font_sizes/font_size = 40
+text = "pause"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_wv5ql")
+theme_override_font_sizes/font_size = 30
+text = "resume"
+
+[node name="SettingsButton" parent="Control/CenterContainer/VBoxContainer" instance=ExtResource("4_srswj")]
+layout_mode = 2
+
+[node name="QuitAndSaveButton" parent="Control/CenterContainer/VBoxContainer" instance=ExtResource("4_ebfl3")]
+layout_mode = 2
+
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]

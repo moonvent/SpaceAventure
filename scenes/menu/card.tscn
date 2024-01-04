@@ -5,9 +5,6 @@
 
 [node name="Card" type="CanvasLayer"]
 
-[node name="Background" type="Sprite2D" parent="."]
-texture = ExtResource("1_r2ajg")
-
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -15,6 +12,12 @@ offset_left = -180.0
 offset_top = -361.0
 offset_right = 179.0
 offset_bottom = 359.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 360.0
+offset_bottom = 720.0
+texture = ExtResource("1_r2ajg")
 
 [node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 1

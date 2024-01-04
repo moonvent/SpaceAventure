@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="space_adventure"
-run/main_scene="res://scenes/level_1/level.tscn"
+run/main_scene="res://scenes/menu/hub.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon.svg"
@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 
 GlobalResourceLoader="*res://scripts/globals/resource_loader.gd"
 Config="*res://scripts/globals/config.gd"
+SaveAction="*res://scripts/globals/save_action.gd"
 
 [display]
 

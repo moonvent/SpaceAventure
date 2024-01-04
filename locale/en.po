@@ -27,6 +27,27 @@ msgstr "Hub"
 msgid "quit"
 msgstr "Quit"
 
+msgid "save_and_quit"
+msgstr "Save And Quit"
+
+msgid "pause"
+msgstr "Pause"
+
+msgid "resume"
+msgstr "Resume"
+
+msgid "settings"
+msgstr "Settings"
+
+msgid "hub"
+msgstr "Hub"
+
+msgid "start_game"
+msgstr "New game"
+
+msgid "continue_game"
+msgstr "Continue"
+
 
 # Example of a string with pluralization.
 msgid "There is %d apple."

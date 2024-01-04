@@ -1,9 +1,15 @@
 extends Node2D
 
 
+class_name Level
+
+
 func _ready():
-	TranslationServer.set_locale('ru')
-	get_tree().change_scene_to_packed(GlobalResourceLoader.GameOverScene)
+	pass
+	# get_tree().change_scene_to_packed(GlobalResourceLoader.GameOverScene)
 
 
+func _notification(what):
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		pass
 

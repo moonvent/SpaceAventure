@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dic2ecj5tfn8x"]
+
+[ext_resource type="Theme" uid="uid://by520rausdyrx" path="res://scenes/level_1/user_interface/themes/first_level_ui_font.tres" id="1_i8xa1"]
+[ext_resource type="Script" path="res://scripts/user_interface/buttons/quit_and_save_button.gd" id="1_qkjnc"]
+
+[node name="QuitAndSaveButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1556.0
+offset_bottom = -987.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_i8xa1")
+theme_override_font_sizes/font_size = 30
+text = "save_and_quit"
+script = ExtResource("1_qkjnc")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

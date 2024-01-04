@@ -15,7 +15,7 @@ texture = ExtResource("2_84f4f")
 
 [node name="CollisionPolygon2D" parent="." index="1"]
 position = Vector2(-0.0999069, 8.60009)
-polygon = PackedVector2Array(0, -40, -16, -3.99994, -32.0001, -39.9999, -57.9999, 22.0002, -31.9998, 44.0001, -15.9999, 32.0001, -1.99983, 46, 26.0001, 19.9999)
+polygon = PackedVector2Array(-1.20033, -40.1998, -16, -3.99994, -32.0001, -39.9999, -57.9999, 22.0002, -31.2, 45.8003, -15.9999, 32.0001, -1.20001, 45.8002, 26.7999, 21.8001)
 
 [node name="ShotMarker" parent="." index="2"]
 position = Vector2(28, 8)

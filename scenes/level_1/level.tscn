@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://sebyshuqf3h2"]
+[gd_scene load_steps=8 format=3 uid="uid://sebyshuqf3h2"]
 
 [ext_resource type="Script" path="res://scripts/level_1/level.gd" id="1_3t3se"]
 [ext_resource type="Texture2D" uid="uid://dk0837q15orhl" path="res://textures/level_1/background.jpg" id="2_1vh16"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c4inxm66joxme" path="res://scenes/level_1/spawner.tscn" id="2_jl3b3"]
 [ext_resource type="PackedScene" uid="uid://c1p70xx8qxjf6" path="res://scenes/level_1/player.tscn" id="3_7y0q3"]
 [ext_resource type="PackedScene" uid="uid://dys3ltrvmw4ec" path="res://scenes/level_1/first_level_handler.tscn" id="3_j4v00"]
+[ext_resource type="PackedScene" uid="uid://blcu7c0vce5pb" path="res://scenes/menu/pause_menu.tscn" id="7_ut7rn"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_3t3se")
@@ -17,6 +18,7 @@ unique_name_in_owner = true
 
 [node name="FirstLevelHandler" parent="." instance=ExtResource("3_j4v00")]
 unique_name_in_owner = true
+process_mode = 3
 
 [node name="Player" parent="." instance=ExtResource("3_7y0q3")]
 unique_name_in_owner = true
@@ -37,3 +39,6 @@ unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
+
+[node name="PauseMenu" parent="." instance=ExtResource("7_ut7rn")]
+unique_name_in_owner = true

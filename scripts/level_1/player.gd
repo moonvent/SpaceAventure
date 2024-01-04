@@ -31,10 +31,6 @@ func _physics_process(_delta):
 	if (Input.is_action_pressed("fire")):
 		gun.fire(look_at_position_coords)
 
-	if (Input.is_action_pressed("pause")):
-		# gun.fire(look_at_position_coords)
-		get_tree().paused = true
-
 
 func decrease_health(decrease_amount: int):
 	super(decrease_amount)

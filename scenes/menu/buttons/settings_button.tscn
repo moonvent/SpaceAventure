@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgde2a7i2w7hk"]
+
+[ext_resource type="Theme" uid="uid://by520rausdyrx" path="res://scenes/level_1/user_interface/themes/first_level_ui_font.tres" id="1_xdent"]
+[ext_resource type="Script" path="res://scripts/user_interface/buttons/settings_button.gd" id="1_yxvhk"]
+
+[node name="SettingsButton" type="Button"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1496.0
+offset_bottom = -933.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_xdent")
+theme_override_font_sizes/font_size = 30
+text = "settings"
+script = ExtResource("1_yxvhk")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

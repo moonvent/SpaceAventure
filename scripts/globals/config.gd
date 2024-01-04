@@ -59,3 +59,21 @@ enum BulletConsts {
 
 const RANGE_BETWEEN_CAMERA_BORDER_AND_SPAWN_POINT := 100
 
+
+enum Stages {
+	FIRST = 0,
+	SECOND = 15,
+	THIRD = 30,
+	FOURTH = 60
+}
+
+
+enum SpawnSide {
+	UP,
+	RIGHT,
+	DOWN,
+	LEFT
+}
+
+
+

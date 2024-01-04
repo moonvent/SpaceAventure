@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://1fd0jtvk8bnm"]
+
+[ext_resource type="Script" path="res://scripts/user_interface/hub.gd" id="1_7mk6f"]
+[ext_resource type="Theme" uid="uid://by520rausdyrx" path="res://scenes/level_1/user_interface/themes/first_level_ui_font.tres" id="1_15epd"]
+[ext_resource type="PackedScene" uid="uid://dgde2a7i2w7hk" path="res://scenes/menu/buttons/settings_button.tscn" id="1_rmce7"]
+[ext_resource type="PackedScene" uid="uid://dic2ecj5tfn8x" path="res://scenes/menu/buttons/quit_and_save_button.tscn" id="2_rpg38"]
+[ext_resource type="PackedScene" uid="uid://b424bv2akrqdc" path="res://scenes/menu/buttons/start_game_button.tscn" id="2_ux335"]
+
+[node name="Hub" type="CanvasLayer"]
+script = ExtResource("1_7mk6f")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+theme = ExtResource("1_15epd")
+
+[node name="HubLabel" type="Label" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "hub"
+horizontal_alignment = 1
+
+[node name="ContinueButton" parent="Control/CenterContainer/VBoxContainer" instance=ExtResource("2_ux335")]
+layout_mode = 2
+
+[node name="SettingsButton" parent="Control/CenterContainer/VBoxContainer" instance=ExtResource("1_rmce7")]
+layout_mode = 2
+
+[node name="QuitAndSaveButton" parent="Control/CenterContainer/VBoxContainer" instance=ExtResource("2_rpg38")]
+layout_mode = 2
